@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROJECT NOVA | Ultra Build v2.0</title>
+    <title>PROJECT NOVA | Ultra Build v2.1</title>
     <script>
         function createFavicon() {
             const canvas = document.createElement('canvas');
@@ -42,7 +42,7 @@
         nav { width: 260px; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(40px); border-right: 1px solid var(--glass-border); padding: 40px 20px; position: fixed; height: 100vh; z-index: 100; }
         .logo { font-size: 26px; font-weight: 700; letter-spacing: 4px; margin-bottom: 50px; display: block; background: var(--gemini-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .logo span.n-accent { font-size: 32px; }
-        .nav-item { padding: 14px 18px; border-radius: 12px; margin-bottom: 8px; cursor: pointer; color: var(--text-dim); font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-item { padding: 14px 18px; border-radius: 12px; margin-bottom: 8px; cursor: pointer; color: var(--text-dim); font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; border: 1px solid transparent;}
         .nav-item:hover { background: rgba(255,255,255,0.08); color: #fff; transform: translateX(5px); }
         .nav-item.active { background: var(--glass); border: 1px solid var(--glass-border); color: #fff; }
 
@@ -69,13 +69,10 @@
         .toggle-box { display: flex; gap: 10px; margin-top: 15px; }
         .toggle-btn { background: #222; border: 1px solid #444; color: #aaa; padding: 6px 12px; border-radius: 8px; font-size: 11px; cursor: pointer; }
         .toggle-btn.active { background: #4285f4; color: white; border-color: #4285f4; }
-        .instruction-pane { margin-top: 15px; padding: 15px; background: rgba(0,0,0,0.3); border-radius: 10px; font-size: 14px; display: none; border-left: 3px solid #4285f4; }
+        .instruction-pane { margin-top: 15px; padding: 20px; background: rgba(0,0,0,0.4); border-radius: 10px; font-size: 14px; display: none; border-left: 3px solid #4285f4; line-height: 1.6;}
 
-        /* Project Tiers */
-        .tier-header { border-bottom: 1px solid #333; padding-bottom: 10px; margin: 40px 0 20px; color: var(--accent-purple); text-transform: uppercase; font-size: 12px; letter-spacing: 2px; }
-
-        /* Prompt Lab Guide */
-        .guide-box { background: rgba(66, 133, 244, 0.1); border: 1px solid #4285f4; padding: 20px; border-radius: 20px; margin-bottom: 20px; display: none; }
+        /* Prompt Lab Evaluation Box */
+        .eval-box { margin-top: 20px; padding: 20px; border-radius: 15px; border: 1px solid #444; background: rgba(255,255,255,0.02); display: none; }
     </style>
 </head>
 <body>
@@ -89,48 +86,40 @@
 </nav>
 
 <main>
-    <!-- ROADMAP PAGE -->
     <div id="roadmap" class="page active">
         <h1>Project Nova Mastery</h1>
         <p style="color:var(--text-dim)">Master 14 tools. 700 Complex Workflows. Two Paths.</p>
         <div class="grid" id="roadmap-grid"></div>
     </div>
 
-    <!-- MISSIONS PAGE -->
     <div id="projects" class="page">
         <h1>Project Missions</h1>
-        <div class="tier-header">Solo Sprints (Tool Specific)</div>
-        <div class="grid" id="solo-grid"></div>
-        <div class="tier-header">The Nexus (Joint Integrations)</div>
-        <div class="grid" id="joint-grid"></div>
+        <div style="color: var(--accent-purple); margin-top: 20px; font-size: 12px; letter-spacing: 2px;">SOLO SPRINTS</div>
+        <div class="grid" id="solo-grid"><p style="color:var(--text-dim)">Missions will populate here as databases are loaded...</p></div>
+        <div style="color: var(--accent-purple); margin-top: 40px; font-size: 12px; letter-spacing: 2px;">THE NEXUS (JOINT INTEGRATIONS)</div>
+        <div class="grid" id="joint-grid"><p style="color:var(--text-dim)">Joint Integrations will populate here...</p></div>
     </div>
 
-    <!-- PROMPT LAB -->
     <div id="lab" class="page">
         <div style="display:flex; justify-content:space-between; align-items:center;">
             <h1>Prompt Lab</h1>
-            <button class="btn-start" style="width:auto; margin-top:0;" onclick="toggleGuide()">View Lab Guide</button>
+            <button class="btn-start" style="width:auto; margin-top:0;" onclick="evaluatePrompt()">Evaluate My Prompt</button>
         </div>
-        <div class="guide-box" id="labGuide">
-            <h3>Architect Prompt Framework</h3>
-            <p>1. <b>Context:</b> Start with "Act as a [Professional Role]..."</p>
-            <p>2. <b>Goal:</b> Clearly state the outcome (e.g., "Create a 3-column table summarizing...")</p>
-            <p>3. <b>Manual Override:</b> Ask AI to provide the manual steps if you need to double-check the logic.</p>
-        </div>
-        <textarea id="promptArea" style="width:100%; height:400px; background:rgba(255,255,255,0.02); border:1px solid #333; border-radius:24px; padding:30px; color:white; font-family:inherit; margin-top:20px; outline:none; font-size:16px;" placeholder="Construct your complex prompts here... Data is saved locally."></textarea>
+        
+        <textarea id="promptArea" style="width:100%; height:250px; background:rgba(255,255,255,0.02); border:1px solid #333; border-radius:24px; padding:30px; color:white; font-family:inherit; margin-top:20px; outline:none; font-size:16px;" placeholder="Type your prompt here... Click 'Evaluate' to check if it's optimal."></textarea>
+        
+        <div id="evalFeedback" class="eval-box"></div>
     </div>
 
-    <!-- SYSTEM -->
     <div id="settings" class="page">
         <h1>System Control</h1>
         <div class="card" style="max-width:400px">
-            <p>This will wipe all 700 tasks and project progress.</p>
+            <p>Wipe all task progress and projects from this browser.</p>
             <button class="btn-start" onclick="hardReset()">Factory Reset All Data</button>
         </div>
     </div>
 </main>
 
-<!-- MASTERY PORTAL -->
 <div id="portal">
     <div class="portal-header">
         <div>
@@ -139,13 +128,10 @@
         </div>
         <button class="btn-start" style="width:auto;" onclick="closePortal()">Back to Roadmap</button>
     </div>
-    <div class="task-list" id="p-task-list">
-        <!-- 50 Tasks go here -->
-    </div>
+    <div class="task-list" id="p-task-list"></div>
 </div>
 
 <script>
-    // DATA STRUCTURE FOR 14 TOOLS
     const toolsData = [
         { id: 'gmail', name: 'Gmail', icon: 'M', desc: 'Summarization & Automation Architect' },
         { id: 'sheets', name: 'Sheets', icon: 'S', desc: 'Data Analytics & Natural Logic' },
@@ -163,14 +149,25 @@
         { id: 'chat', name: 'Chat', icon: 'Ch', desc: 'Team Synergy & AI Summaries' }
     ];
 
-    // MOCK DATA FOR THE 50 TASKS (BATCH 1: GMAIL)
-    // I will provide the real 50-task lists in the next follow-up.
+    // BATCH 1: GMAIL (First 15 Deep-Dive Tasks)
     const tasksData = {
         gmail: [
-            { id: 1, title: "Thread Summarizer", ai: "Prompt: Summarize the last 10 emails in this thread into 3 bullets.", manual: "Open thread > Read all > Take notes > Draft summary." },
-            { id: 2, title: "Tone Architect", ai: "Prompt: Rewrite this draft to be professional but warm.", manual: "Self-edit > Use synonyms > Adjust greetings." }
+            { id: 1, title: "The De-Escalator (Angry Client Response)", ai: "<b>Prompt:</b> 'Act as a Senior PR Manager. Read this angry client email. Draft a response that validates their frustration, takes ownership, and offers a solution without admitting legal fault. Keep it empathetic and under 150 words.'", manual: "<b>Manual Path:</b> 1. Wait 20 mins before replying. 2. Acknowledge the issue in the first sentence. 3. Detail the exact steps being taken to fix it. 4. Offer a timeline for the next update." },
+            { id: 2, title: "Action-Item Extractor (Long Threads)", ai: "<b>Prompt:</b> 'Analyze this 15-email thread. Extract every task assigned specifically to me (mentioning my name or role), the person who assigned it, and the deadline. Output as a 3-column table.'", manual: "<b>Manual Path:</b> 1. Read from the bottom up (oldest to newest). 2. Keep a Google Keep note open side-by-side. 3. Manually copy/paste names and deadlines into a bulleted list." },
+            { id: 3, title: "The Polite 'No' (Meeting Rejection)", ai: "<b>Prompt:</b> 'Act as a busy executive. Draft a polite but firm email declining this meeting invitation. Suggest that the issue be handled asynchronously via a shared Google Doc instead. Maintain a collaborative tone.'", manual: "<b>Manual Path:</b> 1. Thank them for the invite. 2. State that your calendar is locked for deep work. 3. Create a Google Doc, share the link, and ask them to drop their agenda items there." },
+            { id: 4, title: "Invoice Follow-Up Loop", ai: "<b>Prompt:</b> 'Write a 3-part email sequence for late invoice follow-ups. Email 1: Friendly nudge (2 days late). Email 2: Firm reminder (7 days late). Email 3: Final notice with late fee mention (14 days late). Output clearly separated.'", manual: "<b>Manual Path:</b> 1. Check your accounting software. 2. Draft an email attaching the original invoice. 3. Set a Calendar reminder to check back in 5 days to send the next email manually." },
+            { id: 5, title: "The Project Update Broadcaster", ai: "<b>Prompt:</b> 'Take these rough bullet points about our project's progress this week. Turn them into a highly formatted, scannable update email for stakeholders. Use bolding for key metrics and include a 'Next Steps' section.'", manual: "<b>Manual Path:</b> 1. Gather notes from your team. 2. Format into headers: 'Done', 'Doing', 'Blocked'. 3. Bold all numbers and dates so executives can skim it." },
+            { id: 6, title: "Cold Outreach Personalizer", ai: "<b>Prompt:</b> 'I am trying to sell SEO services. Here is the LinkedIn bio of my prospect. Write a 4-sentence cold email that references a specific detail from their bio in the first sentence to prove it is not automated.'", manual: "<b>Manual Path:</b> 1. Research the prospect's recent posts. 2. Write a custom first line complimenting their work. 3. Paste in your standard pitch. 4. Add a low-friction call to action." },
+            { id: 7, title: "The Double Opt-In Intro", ai: "<b>Prompt:</b> 'Write an email to Person A asking if they are open to an introduction to Person B. Explain briefly why Person B wants to connect and how it benefits Person A. Keep it highly respectful of Person A's time.'", manual: "<b>Manual Path:</b> 1. Email the 'higher status' person first privately. 2. Wait for their 'Yes'. 3. Send a new email with both parties on the To: line, explaining why you are connecting them." },
+            { id: 8, title: "Vacation Delegation Auto-Responder", ai: "<b>Prompt:</b> 'Draft an Out of Office response. State I am away from [Date] to [Date]. For urgent tech issues, direct them to [Name]. For billing, direct to [Name]. Add a humorous closing line about disconnecting.'", manual: "<b>Manual Path:</b> 1. Go to Gmail Settings > See all settings. 2. Scroll to 'Vacation responder'. 3. Type out the dates and the alternative contacts. 4. Turn responder ON." },
+            { id: 9, title: "The Legal Jargon Translator", ai: "<b>Prompt:</b> 'Act as a 5th-grade teacher. Read this vendor contract email. Summarize the 3 main obligations I am agreeing to, and point out any hidden fees. Explain it in plain English.'", manual: "<b>Manual Path:</b> 1. Read the contract line by line. 2. Highlight words like 'Indemnify' or 'Net-30'. 3. Google the terms. 4. Write a summary for yourself before signing." },
+            { id: 10, title: "Grammar & Tone Polisher", ai: "<b>Prompt:</b> 'Review this draft email. Fix all grammatical errors, but more importantly, remove any passive-aggressive phrasing. Make it sound confident and collaborative.'", manual: "<b>Manual Path:</b> 1. Read your draft out loud to catch awkward phrasing. 2. Run it through a basic spell-checker. 3. Delete filler words like 'just', 'I think', and 'maybe'." },
+            { id: 11, title: "Event RSVP Tracker Prep", ai: "<b>Prompt:</b> 'I am sending an event invite via email. Write the exact copy for the email, and give me the instructions on how to link a Google Form inside it so RSVPs auto-populate into a Sheet.'", manual: "<b>Manual Path:</b> 1. Create a Google Form with Name and Dietary Restrictions. 2. Copy the Form link. 3. Draft the email and hyperlink the words 'Click Here to RSVP'." },
+            { id: 12, title: "The Pitch Rejection Pivot", ai: "<b>Prompt:</b> 'A client just rejected our proposal because of budget. Write a response thanking them for their time, leaving the door open for the future, and offering a smaller, 'down-sell' package instead.'", manual: "<b>Manual Path:</b> 1. Acknowledge their budget constraints. 2. Do not argue. 3. Propose a stripped-down version of your service for half the price as an alternative." },
+            { id: 13, title: "Newsletter Synthesizer", ai: "<b>Prompt:</b> 'I have pasted 4 different industry newsletters below. Synthesize the overlapping trends into one master paragraph that I can send to my team as 'This Week's Industry Insights'.'", manual: "<b>Manual Path:</b> 1. Read all 4 newsletters. 2. Look for topics mentioned in at least two of them. 3. Write a brief summary of those specific topics and link the original sources." },
+            { id: 14, title: "The 'Bump' Email", ai: "<b>Prompt:</b> 'I emailed a busy client a proposal 4 days ago with no response. Write a 2-sentence 'bump' email that brings the thread to the top of their inbox without sounding annoying or demanding.'", manual: "<b>Manual Path:</b> 1. Find the sent email. 2. Click Reply. 3. Type: 'Hi [Name], bringing this to the top of your inbox. Let me know if you have any questions!'." },
+            { id: 15, title: "Meeting Prep Brief", ai: "<b>Prompt:</b> 'I have a meeting with [Company] tomorrow. Based on this thread of our past conversations, generate a 5-point cheat sheet of what they care about most, so I can review it 5 minutes before the call.'", manual: "<b>Manual Path:</b> 1. Search the client's name in Gmail. 2. Skim the last 6 months of emails. 3. Note their pain points on a physical notepad." }
         ]
-        // More will be added here...
     };
 
     let userProgress = JSON.parse(localStorage.getItem('nova_v2_progress')) || { tools: [], tasks: [], projects: [] };
@@ -207,19 +204,23 @@
         const list = document.getElementById('p-task-list');
         list.innerHTML = '';
         
-        // Load tasks (currently using mock data)
         const tasks = tasksData[toolId] || [];
+        if(tasks.length === 0) {
+            list.innerHTML = "<p style='color:var(--text-dim)'>Module data loading in future update...</p>";
+            return;
+        }
+
         tasks.forEach(task => {
             const item = document.createElement('div');
             item.className = 'task-item';
             item.innerHTML = `
                 <div style="display:flex; justify-content:space-between;">
                     <b>${task.title}</b>
-                    <input type="checkbox" ${userProgress.tasks.includes(toolId + task.id) ? 'checked' : ''} onchange="toggleTask('${toolId}', ${task.id})">
+                    <input type="checkbox" style="transform:scale(1.5); cursor:pointer;" ${userProgress.tasks.includes(toolId + task.id) ? 'checked' : ''} onchange="toggleTask('${toolId}', ${task.id})">
                 </div>
                 <div class="toggle-box">
-                    <button class="toggle-btn" id="btn-ai-${task.id}" onclick="showPath(${task.id}, 'ai')">AI PATH</button>
-                    <button class="toggle-btn" id="btn-man-${task.id}" onclick="showPath(${task.id}, 'man')">MANUAL PATH</button>
+                    <button class="toggle-btn" onclick="showPath(${task.id}, 'ai')">AI PATH</button>
+                    <button class="toggle-btn" onclick="showPath(${task.id}, 'man')">MANUAL PATH</button>
                 </div>
                 <div class="instruction-pane" id="pane-ai-${task.id}">${task.ai}</div>
                 <div class="instruction-pane" id="pane-man-${task.id}" style="border-left-color:#9b72cb">${task.manual}</div>
@@ -231,31 +232,63 @@
     function showPath(taskId, type) {
         const aiPane = document.getElementById(`pane-ai-${taskId}`);
         const manPane = document.getElementById(`pane-man-${taskId}`);
-        if(type === 'ai') {
-            aiPane.style.display = 'block';
-            manPane.style.display = 'none';
-        } else {
-            aiPane.style.display = 'none';
-            manPane.style.display = 'block';
-        }
+        if(type === 'ai') { aiPane.style.display = 'block'; manPane.style.display = 'none'; } 
+        else { aiPane.style.display = 'none'; manPane.style.display = 'block'; }
     }
 
     function toggleTask(toolId, taskId) {
         const key = toolId + taskId;
-        if(userProgress.tasks.includes(key)) {
-            userProgress.tasks = userProgress.tasks.filter(t => t !== key);
-        } else {
-            userProgress.tasks.push(key);
-        }
+        if(userProgress.tasks.includes(key)) { userProgress.tasks = userProgress.tasks.filter(t => t !== key); } 
+        else { userProgress.tasks.push(key); }
         localStorage.setItem('nova_v2_progress', JSON.stringify(userProgress));
     }
 
     function closePortal() { document.getElementById('portal').style.display = 'none'; }
-    function toggleGuide() { 
-        const g = document.getElementById('labGuide');
-        g.style.display = g.style.display === 'block' ? 'none' : 'block';
-    }
     function hardReset() { if(confirm("Are you sure?")) { localStorage.clear(); location.reload(); } }
+
+    // PROMPT EVALUATOR LOGIC
+    function evaluatePrompt() {
+        const text = document.getElementById('promptArea').value.toLowerCase();
+        const feedbackBox = document.getElementById('evalFeedback');
+        let score = 0;
+        let suggestions = [];
+
+        if(text.length < 10) {
+            feedbackBox.innerHTML = "<span style='color:#d96570;'>⚠️ Prompt is too short to evaluate. Type a full command.</span>";
+            feedbackBox.style.display = "block";
+            return;
+        }
+
+        // Check 1: Context/Role
+        if (text.includes("act as") || text.includes("you are") || text.includes("role") || text.includes("persona")) {
+            score++;
+        } else {
+            suggestions.push("🔹 <b>Missing Context:</b> Tell the AI who it is. (e.g., 'Act as a Data Analyst...')");
+        }
+
+        // Check 2: Format
+        if (text.includes("table") || text.includes("bullet") || text.includes("format") || text.includes("list") || text.includes("email") || text.includes("script")) {
+            score++;
+        } else {
+            suggestions.push("🔹 <b>Missing Format:</b> Specify exactly how you want the output. (e.g., 'Give me a 3-column table' or 'Write a 2-paragraph email').");
+        }
+
+        // Check 3: Constraints
+        if (text.includes("tone") || text.includes("limit") || text.includes("under") || text.includes("only") || text.includes("do not")) {
+            score++;
+        } else {
+            suggestions.push("🔹 <b>Missing Constraints:</b> Add guardrails to stop the AI from rambling. (e.g., 'Keep it under 150 words' or 'Use a highly professional tone').");
+        }
+
+        if (score === 3) {
+            feedbackBox.innerHTML = "<span style='color:#4285f4; font-size:16px;'>✅ <b>Optimal Architect Prompt!</b><br><br>You have established Context, defined the Output Format, and set clear Constraints. Copy this and use it!</span>";
+            feedbackBox.style.borderColor = "#4285f4";
+        } else {
+            feedbackBox.innerHTML = "<span style='color:#d96570; font-size:16px;'>⚠️ <b>Optimization Needed:</b></span><br><br>" + suggestions.join("<br><br>");
+            feedbackBox.style.borderColor = "#d96570";
+        }
+        feedbackBox.style.display = "block";
+    }
 
     renderRoadmap();
 </script>
