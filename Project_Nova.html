@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT NOVA | Master Architect</title>
+    <script>
+        function createFavicon() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 32; canvas.height = 32;
+            const ctx = canvas.getContext('2d');
+            const gradient = ctx.createLinearGradient(0, 0, 32, 32);
+            gradient.addColorStop(0, '#4285f4');
+            gradient.addColorStop(1, '#9b72cb');
+            ctx.fillStyle = gradient;
+            ctx.beginPath(); ctx.roundRect(0, 0, 32, 32, 8); ctx.fill();
+            ctx.fillStyle = "white"; ctx.font = "bold 22px 'Google Sans', Arial";
+            ctx.textAlign = "center"; ctx.textBaseline = "middle";
+            ctx.fillText("N", 16, 17);
+            const link = document.createElement('link');
+            link.rel = 'icon'; link.href = canvas.toDataURL();
+            document.head.appendChild(link);
+        }
+        window.onload = createFavicon;
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gemini-gradient: linear-gradient(135deg, #4285f4, #9b72cb, #d96570);
+            --bg-dark: #0a0a0c;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff;
+            --text-dim: #b0b0b0;
+        }
+
+        * { box-sizing: border-box; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        body { background: var(--bg-dark); color: var(--text-main); font-family: 'Google Sans', sans-serif; margin: 0; display: flex; min-height: 100vh; background-image: radial-gradient(circle at 2% 2%, rgba(66, 133, 244, 0.15), transparent 35%), radial-gradient(circle at 98% 98%, rgba(217, 101, 112, 0.15), transparent 35%); }
+
+        nav { width: 260px; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(40px); border-right: 1px solid var(--glass-border); padding: 40px 20px; position: fixed; height: 100vh; z-index: 10; }
+        
+        /* LOGO STYLING: Full Gradient NOVA */
+        .logo { 
+            font-size: 26px; 
+            font-weight: 700; 
+            letter-spacing: 4px; 
+            margin-bottom: 50px; 
+            display: block; 
+            background: var(--gemini-gradient); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+        .logo span.n-accent { font-size: 32px; }
+        
+        .nav-item { padding: 14px 18px; border-radius: 12px; margin-bottom: 8px; cursor: pointer; color: var(--text-dim); font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-item:hover { background: rgba(255,255,255,0.05); color: #fff; }
+        .nav-item.active { background: var(--glass); border: 1px solid var(--glass-border); color: #fff; }
+
+        main { margin-left: 260px; padding: 60px; width: 100%; max-width: 1200px; }
+        .page { display: none; animation: slideUp 0.5s ease; }
+        .page.active { display: block; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        h1 { font-size: 48px; font-weight: 400; margin: 0; letter-spacing: -1px; }
+        .status-pill { display: inline-block; padding: 4px 12px; border-radius: 20px; background: rgba(155, 114, 203, 0.2); color: #9b72cb; font-size: 11px; font-weight: 700; margin-bottom: 15px; border: 1px solid rgba(155, 114, 203, 0.3); }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 24px; padding: 25px; cursor: pointer; position: relative; min-height: 180px; }
+        .card:hover { border-color: rgba(255,255,255,0.4); transform: translateY(-5px); background: rgba(255,255,255,0.08); }
+        
+        .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); backdrop-filter: blur(25px); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
+        .modal { background: #111; width: 700px; padding: 50px; border-radius: 40px; border: 1px solid var(--glass-border); max-height: 90vh; overflow-y: auto; }
+        .btn { padding: 18px; border-radius: 18px; border: none; font-weight: 700; cursor: pointer; background: var(--gemini-gradient); color: white; width: 100%; margin-top: 25px; font-size: 16px; }
+        .step-box { background: rgba(255,255,255,0.03); padding: 25px; border-radius: 20px; margin: 20px 0; border-left: 4px solid #4285f4; line-height: 1.8; color: var(--text-dim); }
+    </style>
+</head>
+<body>
+
+<nav>
+    <span class="logo"><span class="n-accent">N</span>OVA</span>
+    <div class="nav-item active" onclick="showPage('roadmap', this)">Skill Roadmap</div>
+    <div class="nav-item" onclick="showPage('projects', this)">My Projects</div>
+    <div class="nav-item" onclick="showPage('lab', this)">Prompt Lab</div>
+    <div class="nav-item" onclick="showPage('settings', this)">System</div>
+</nav>
+
+<main>
+    <div id="roadmap" class="page active">
+        <span class="status-pill">14-TOOL MASTER ARCHITECT Build</span>
+        <h1>Project Nova</h1>
+        <p style="color:var(--text-dim); margin-bottom:45px;">The complete Google Workspace ecosystem, mastered via AI.</p>
+        <div class="grid" id="roadmap-grid"></div>
+    </div>
+
+    <div id="projects" class="page"><h1>Missions</h1><div class="grid" id="project-grid"></div></div>
+    <div id="lab" class="page"><h1>Prompt Lab</h1><textarea id="promptArea" style="width:100%; height:300px; background:rgba(255,255,255,0.03); border:1px solid #333; border-radius:30px; padding:30px; color:white; font-family:inherit;"></textarea></div>
+    <div id="settings" class="page"><h1>System</h1><button class="btn" style="width:200px" onclick="localStorage.clear(); location.reload();">Hard Reset Data</button></div>
+</main>
+
+<div class="overlay" id="overlay">
+    <div class="modal">
+        <h2 id="m-title"></h2>
+        <div id="m-content"></div>
+        <button class="btn" id="m-complete">Master This Item</button>
+        <button class="btn" style="background:none; border:1px solid #333;" onclick="closeModal()">Return</button>
+    </div>
+</div>
+
+<script>
+    const skills = [
+        { id: 1, tool: "Gmail", title: "Thread Summarizer", desc: "Turn 20+ emails into a 3-point action list." },
+        { id: 2, tool: "Sheets", title: "Natural Logic", desc: "Generate complex formulas via text description." },
+        { id: 3, tool: "NotebookLM", title: "Source Chat", desc: "Build an AI brain from private PDFs." },
+        { id: 4, tool: "Docs", title: "Structure Flow", desc: "Convert rough notes into formal reports." },
+        { id: 5, tool: "Calendar", title: "Time Auditor", desc: "Export your week and let Gemini find 'Deep Work' gaps." },
+        { id: 6, tool: "Keep", title: "AI Scratchpad", desc: "Sync prompts and AI snippets via the side-panel." },
+        { id: 7, tool: "Sites", title: "Hub Architect", desc: "Design professional project portals for your team." },
+        { id: 8, tool: "App Sheet", title: "No-Code Creator", desc: "Turn spreadsheets into functional mobile apps." },
+        { id: 9, tool: "Apps Script", title: "Flow Logic", desc: "Write scripts with AI to connect your apps." },
+        { id: 10, tool: "Forms", title: "Intelligent Surveys", desc: "Generate logic-based questions with AI." },
+        { id: 11, tool: "Slides", title: "Pitch Deck AI", desc: "Transform outlines into high-impact slide decks." },
+        { id: 12, tool: "Vids", title: "AI Storyboarding", desc: "Script and storyboard internal team updates." },
+        { id: 13, tool: "Drive", title: "File Governance", desc: "AI-assisted organization and deep search." },
+        { id: 14, tool: "Chat/Spaces", title: "Team AI Hub", desc: "Master AI-driven summaries of group discussions." }
+    ];
+
+    let currentTask = null;
+    let progress = JSON.parse(localStorage.getItem('nova_prog')) || [];
+
+    function showPage(id, el) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+        el.classList.add('active');
+    }
+
+    function render() {
+        const g = document.getElementById('roadmap-grid');
+        if(!g) return;
+        g.innerHTML = '';
+        skills.forEach(s => {
+            const isDone = progress.includes(s.id);
+            const c = document.createElement('div');
+            c.className = `card`;
+            if(isDone) c.style.borderColor = '#4285f4';
+            c.onclick = () => {
+                currentTask = s.id;
+                document.getElementById('overlay').style.display = 'flex';
+                document.getElementById('m-title').innerText = s.tool + " Mastery";
+                document.getElementById('m-content').innerHTML = `<div class='step-box'><b>Architect Workflow:</b><br>1. Open ${s.tool}.<br>2. Use Gemini to execute: "${s.desc}"<br>3. Verify the output in your Workspace.</div>`;
+            };
+            c.innerHTML = `<span style="color:#9b72cb; font-weight:700; font-size:10px; letter-spacing:1px;">${s.tool}</span><h3>${s.title}</h3><p style="font-size:13px; color:var(--text-dim);">${s.desc}</p>${isDone ? '<b style="color:#4285f4; position:absolute; top:15px; right:20px;">✓</b>' : ''}`;
+            g.appendChild(c);
+        });
+    }
+
+    document.getElementById('m-complete').onclick = () => {
+        if(currentTask && !progress.includes(currentTask)) progress.push(currentTask);
+        localStorage.setItem('nova_prog', JSON.stringify(progress));
+        closeModal(); render();
+    };
+
+    function closeModal() { document.getElementById('overlay').style.display = 'none'; }
+    render();
+</script>
+</body>
+</html>
