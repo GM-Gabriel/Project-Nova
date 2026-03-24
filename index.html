@@ -651,6 +651,98 @@
             ai: "<b>Prompt:</b> 'Explain the strategic use of a 'Global Footer' for legal disclaimers, contact info, or quick-links that need to appear on every single page of the site. Show step by step.'", 
             manual: "<b>Manual Path:</b><br>1. Scroll to the absolute bottom of any page in the editor.<br>2. Click 'Edit footer'.<br>3. Add your text, links, or logos.<br>4. Click anywhere else to save.<br>5. The footer is now 'sticky' across every page in your hierarchy, ensuring consistent access to 'Help Desk' or 'Privacy Policy' links." 
         }
+    ],
+        appsheet: [
+        { 
+            id: 1, 
+            title: "Data Source Regeneration", 
+            ai: "<b>Prompt:</b> 'Act as an AppSheet Developer. I added a new column to my Google Sheet database. Explain how to 'Regenerate Structure' in AppSheet so the app recognizes the new field without breaking existing views. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Open the AppSheet Editor and navigate to the 'Data' tab.<br>2. Select the 'Tables' sub-tab and click on your specific table.<br>3. In the top right of the table settings, click the blue 'Regenerate Structure' button.<br>4. Confirm the pop-up warning.<br>5. AppSheet will scan the Google Sheet, identify the new header, and add it to the 'Columns' list.<br>6. Check the 'Type' of the new column (e.g., Text, Number, Date) to ensure it was guessed correctly." 
+        },
+        { 
+            id: 2, 
+            title: "Column Type Logic (Enum vs. Text)", 
+            ai: "<b>Prompt:</b> 'Explain the technical difference between a 'Text' column and an 'Enum' column in AppSheet. How do I create a dropdown list with specific colors for each option? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. In the 'Data' > 'Columns' tab, find your target column.<br>2. Change the 'Type' dropdown to 'Enum'.<br>3. Click the 'Edit' (pencil) icon next to the column name.<br>4. Under 'Values', click 'Add' to enter your dropdown options (e.g., Low, Medium, High).<br>5. Under 'Input mode', choose 'Dropdown' or 'Buttons'.<br>6. In the 'Data Validity' section, ensure 'Allow other values' is unchecked if you want a strict list." 
+        },
+        { 
+            id: 3, 
+            title: "The Virtual Column Power (Calculated Data)", 
+            ai: "<b>Prompt:</b> 'Act as a Database Architect. Explain how to create a 'Virtual Column' that concatenates a User's Name and their Employee ID into a single string. Explain why this data doesn't appear in the original Google Sheet. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to Data > Columns and click your table.<br>2. Click '+ Add Virtual Column' at the top.<br>3. Name it 'Full_Identifier'.<br>4. In the 'App Formula' box, type: <code>CONCATENATE([Name], \" - \", [Employee_ID])</code>.<br>5. Click 'Save'.<br>6. This column exists only in the app's memory (the 'App Layer') and calculates in real-time on the user's device." 
+        },
+        { 
+            id: 4, 
+            title: "Slice Logic (Filtered Data Views)", 
+            ai: "<b>Prompt:</b> 'Explain how to create a 'Slice' that only shows rows where the 'Status' is 'Incomplete'. How do I create a specific UX view that only uses this slice? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to Data > Slices and click '+ Create a new slice'.<br>2. Name it 'Incomplete_Tasks'.<br>3. In the 'Row filter condition', type: <code>[Status] = \"Incomplete\"</code>.<br>4. Now go to the 'App' > 'Views' tab.<br>5. Click '+ Add View', and in the 'For this data' dropdown, select your 'Incomplete_Tasks' slice instead of the main table." 
+        },
+        { 
+            id: 5, 
+            title: "Ref Columns (Relational Database Links)", 
+            ai: "<b>Prompt:</b> 'Act as a Systems Engineer. Explain how to use the 'Ref' column type to link a 'Tasks' table to a 'Projects' table. Explain how this creates an inline sub-list. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. In your 'Tasks' table, ensure you have a column named 'Project_ID'.<br>2. Change the Type of 'Project_ID' to 'Ref'.<br>3. In the 'Type Details', select the 'Projects' table as the destination.<br>4. AppSheet will automatically create a 'Related Tasks' virtual column in your Projects table.<br>5. Now, when you view a Project, you will see a list of all Tasks associated with that specific ID automatically." 
+        },
+        { 
+            id: 6, 
+            title: "User Settings & Personalization", 
+            ai: "<b>Prompt:</b> 'Explain how to use 'User Settings' so that an app user can select their 'Region' (e.g., East, West) and have the entire app filter data based on that choice. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to Settings > User Settings.<br>2. Enable 'Setting 1' and name it 'Select Region'. Set Type to 'Enum'.<br>3. Go to your Slices or App Formulas.<br>4. Use the expression <code>USERSETTINGS(\"Select Region\")</code> to filter data.<br>5. Example Slice Filter: <code>[Region] = USERSETTINGS(\"Select Region\")</code>.<br>6. Users can change this in the app's sidebar menu to customize their own data view." 
+        },
+        { 
+            id: 7, 
+            title: "Dynamic Image Management (Image Store)", 
+            ai: "<b>Prompt:</b> 'Act as a Mobile UX Designer. Explain how to configure a column to capture photos from a phone's camera. How do I change the 'Image Store' folder in Google Drive? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Set a column Type to 'Image'.<br>2. In the 'Type Details', find 'Image store'.<br>3. By default, it saves to a folder in Drive named after the app.<br>4. To change it, type a folder path like <code>\"/Project_Photos/\"</code>.<br>5. When a user uploads a photo, AppSheet saves the file to Drive and puts the text file-path in the spreadsheet cell." 
+        },
+        { 
+            id: 8, 
+            title: "Automation Bots (Email on Change)", 
+            ai: "<b>Prompt:</b> 'Explain how to build an Automation Bot that sends an email to a manager whenever a new row is added to the 'High Priority' slice. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to the 'Automation' tab and click '+ Create a new bot'.<br>2. Select 'Configure Event' > 'Adds only' for your table.<br>3. Add a 'Condition': <code>[Priority] = \"High\"</code>.<br>4. Add a 'Step' > 'Run a task' > 'Send an email'.<br>5. Customize the 'Email Body' using placeholders like <code><<[Task_Name]>></code>.<br>6. Save and click the 'Monitor' tab to test the execution." 
+        },
+        { 
+            id: 9, 
+            title: "UX Formatting Rules (Visual Logic)", 
+            ai: "<b>Prompt:</b> 'Act as a UI/UX Specialist. Explain how to use 'Format Rules' to turn text green and add a 'Checkmark' icon if a task is marked as 'Finished'. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to App > Format Rules.<br>2. Click '+ Add Format Rule'.<br>3. Under 'For this data', select your table and the condition: <code>[Status] = \"Finished\"</code>.<br>4. Choose the columns you want to format.<br>5. Pick a green color and select a 'Checkmark' icon from the library.<br>6. Click Save. The icons will now appear dynamically in your list views." 
+        },
+        { 
+            id: 10, 
+            title: "Offline Sync Settings (Field Operations)", 
+            ai: "<b>Prompt:</b> 'Explain the difference between 'Sync on Start' and 'Delayed Sync'. How do I ensure an app works in a basement with no Wi-Fi? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to Settings > Offline/Sync.<br>2. Ensure 'Offline use' is enabled.<br>3. Check 'Store content for offline use'.<br>4. To speed up the app, uncheck 'Sync on start' and check 'Delayed sync'.<br>5. Changes will be cached locally on the device and pushed to the Google Sheet once a connection is restored.<br>6. Look for the 'Sync' icon (circular arrows) in the app top bar to see the number of pending changes." 
+        },
+        { 
+            id: 11, 
+            title: "Security Filters (Data Partitioning)", 
+            ai: "<b>Prompt:</b> 'Act as a Cybersecurity Officer. Explain the difference between a 'Slice' and a 'Security Filter'. Why is a Security Filter safer for sensitive data? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to Data > Tables and click your table.<br>2. Find the 'Security' section.<br>3. In 'Security filter', type: <code>[User_Email] = USEREMAIL()</code>.<br>4. Unlike a Slice (which downloads all data and filters it on the phone), a Security Filter tells the server to *only* send the relevant rows to the device.<br>5. This prevents unauthorized users from 'sniffing' the local database for other people's data." 
+        },
+        { 
+            id: 12, 
+            title: "Map & GPS Interaction", 
+            ai: "<b>Prompt:</b> 'Explain how to set up a 'Map View' in AppSheet. What column types (LatLong vs Address) are required for GPS pins to appear correctly? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Ensure your Sheet has a column for 'Address' (Text) or 'Location' (LatLong).<br>2. In Data > Columns, set the Type to 'LatLong'.<br>3. Go to App > Views and create a new view of type 'Map'.<br>4. In 'Map column', select your LatLong field.<br>5. Users can now click the 'Pin' icon in the app to capture their exact current coordinates using the device's GPS." 
+        },
+        { 
+            id: 13, 
+            title: "PDF Report Generation (File Store)", 
+            ai: "<b>Prompt:</b> 'Act as an Operations Lead. Explain how to use Automation to generate a PDF summary of a project and save it to a specific Google Drive folder. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. In Automation, create a new Bot triggered by an update.<br>2. Add a Step > 'Run a task' > 'Create a new file'.<br>3. Set HTTP Content Type to 'PDF'.<br>4. Click 'Create' next to 'Template' to generate a Google Doc that acts as your PDF layout.<br>5. Customize the Doc with <code><<[Column_Name]>></code> tags.<br>6. Define the 'File Folder Path' (e.g., <code>\"/Reports/\"</code>) and click Save." 
+        },
+        { 
+            id: 14, 
+            title: "The 'Select' Expression (Complex Queries)", 
+            ai: "<b>Prompt:</b> 'Explain the syntax of the SELECT() function in AppSheet. How do I use it to find the average price of all items in a 'Products' table that belong to the 'Electronics' category? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. The basic syntax is <code>SELECT(Table[Column], Condition)</code>.<br>2. To find the average, wrap it in an AVERAGE function.<br>3. Final expression: <code>AVERAGE(SELECT(Products[Price], [Category] = \"Electronics\"))</code>.<br>4. This function is powerful because it allows you to query any table in your app from anywhere else, regardless of 'Ref' links." 
+        },
+        { 
+            id: 15, 
+            title: "App Deployment & Branding", 
+            ai: "<b>Prompt:</b> 'Explain the process of 'Deploying' an app. What is the difference between a Prototype and a Deployed app regarding user limits and white-labeling? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the 'Manage' > 'Deploy' tab in the sidebar.<br>2. Run the 'Deployment Check'. Address any errors (like missing descriptions).<br>3. Click 'Move app to deployed state'.<br>4. Under App > Brand, you can now change the Launch Image, Logo, and Theme colors to remove the 'AppSheet' branding.<br>5. Note: Deployed apps on the Free tier are limited to 10 users; beyond that, a Workspace license is required." 
+        }
     ]
     };
 
