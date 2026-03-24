@@ -835,6 +835,80 @@
             ai: "<b>Prompt:</b> 'Explain the purpose of the 'appsscript.json' manifest file and how to enable it. How do I use 'Versions' to roll back code if I break something? Show step by step.'", 
             manual: "<b>Manual Path:</b><br>1. Go to Project Settings (Gear icon) and check 'Show appsscript.json manifest file'.<br>2. This JSON file controls scopes and time zones.<br>3. To save a snapshot of your code, click 'Deploy' > 'Manage Deployments' > 'Edit' > 'New Version'.<br>4. Give it a name (e.g., 'Stable v1.0').<br>5. If your current code breaks, you can re-deploy the 'Stable v1.0' version to fix the live environment instantly." 
         }
+    ],
+        forms: [
+        { 
+            id: 1, 
+            title: "Regex Data Validation", 
+            ai: "<b>Prompt:</b> 'Act as a Data Quality Engineer. Explain how to use Regular Expressions (Regex) in Google Forms to ensure a user enters a valid Employee ID (e.g., 2 letters followed by 4 numbers). Provide the Regex pattern and show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Create a 'Short answer' question.<br>2. Click the 3-dot menu (bottom right) and select 'Response validation'.<br>3. In the first dropdown, change 'Number' to 'Regular expression'.<br>4. Change 'Contains' to 'Matches'.<br>5. In 'Pattern', type: <code>^[A-Z]{2}\\d{4}$</code>.<br>6. In 'Custom error text', type 'ID must be 2 caps and 4 digits (e.g., AB1234)'.<br>7. This prevents 'dirty data' from entering your database at the point of entry." 
+        },
+        { 
+            id: 2, 
+            title: "Conditional Branching (Go to Section)", 
+            ai: "<b>Prompt:</b> 'Explain how to use 'Go to section based on answer' to create a dynamic form. If a user selects 'Hardware Issue', they should see page 2; if 'Software', page 3. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the 'Add section' (two bars) icon in the floating sidebar to create Section 2 and 3.<br>2. Create a 'Multiple choice' question in Section 1.<br>3. Click the 3-dot menu and select 'Go to section based on answer'.<br>4. Next to 'Hardware', select 'Go to section 2'.<br>5. Next to 'Software', select 'Go to section 3'.<br>6. This reduces 'form fatigue' by only showing users relevant questions." 
+        },
+        { 
+            id: 3, 
+            title: "Pre-filled URL Generation", 
+            ai: "<b>Prompt:</b> 'Act as a Marketing Automation Specialist. Explain how to generate a 'Pre-filled Link' for a form so that a specific Project ID is already typed in when the user opens the link. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the 3-dot menu (top right, near 'Send').<br>2. Select 'Get pre-filled link'.<br>3. Fill in the answers you want to be 'default' for the user.<br>4. Click 'Get link' at the bottom and 'Copy link'.<br>5. You can now send this link in emails so users don't have to re-type repetitive data like their Department or Location." 
+        },
+        { 
+            id: 4, 
+            title: "The Spreadsheet Destination Logic", 
+            ai: "<b>Prompt:</b> 'Explain how to link a form to an existing Google Sheet. What happens to the 'Timestamp' column if I move it? Explain the best practices for managing the 'Form Responses' tab. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to the 'Responses' tab at the top of the form editor.<br>2. Click 'Link to Sheets'.<br>3. Choose 'Select existing spreadsheet' to keep all project data in one file.<br>4. A new tab named 'Form Responses 1' is created.<br>5. **Pro Tip:** Never edit data directly in this tab. Use the <code>=QUERY()</code> function in a second tab to pull and clean the data for your AppSheet or Dashboards." 
+        },
+        { 
+            id: 5, 
+            title: "Form-to-Email (Advanced Scripting)", 
+            ai: "<b>Prompt:</b> 'Act as a Solution Architect. Write a simple Apps Script that triggers an 'On form submit' and sends a customized HTML email containing the form answers back to the user. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. From the Form Editor, click the 3-dot menu > 'Script editor'.<br>2. Create a function: <code>function onFormSubmit(e) { ... }</code>.<br>3. Use <code>e.response.getItemResponses()</code> to extract answers.<br>4. Use <code>MailApp.sendEmail()</code> to send the receipt.<br>5. Go to 'Triggers' (Clock icon) and set the event type to 'On form submit'.<br>6. This allows for professional, branded 'Thank You' emails beyond the basic Google default." 
+        },
+        { 
+            id: 6, 
+            title: "File Upload via Forms", 
+            ai: "<b>Prompt:</b> 'Explain the security and storage implications of the 'File upload' question type. Where are the files stored in Drive, and how do I set a maximum file size? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Add a new question and change type to 'File upload'.<br>2. Click 'Continue' to allow the form to create a folder in your Drive.<br>3. Limit the 'Maximum file size' (e.g., 10MB) to prevent users from eating up your storage quota.<br>4. Select 'Allow only specific file types' (e.g., PDF) for security.<br>5. Note: This feature is only available for forms within the same Organization or for users signed into Google." 
+        },
+        { 
+            id: 7, 
+            title: "Quiz Mode & Auto-Grading", 
+            ai: "<b>Prompt:</b> 'Explain how to turn a form into a 'Quiz'. How do I set answer keys and point values? Explain how 'Release Grades' works for technical certification. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to 'Settings' > 'Make this a quiz'.<br>2. Go back to 'Questions' and click 'Answer key' at the bottom of a question.<br>3. Select the correct answer and assign a point value (e.g., 10).<br>4. Choose 'Immediately after each submission' for the grade release if you want instant feedback.<br>5. This is perfect for verifying that a team has read and understood a new technical SOP." 
+        },
+        { 
+            id: 8, 
+            title: "Timer Integration (Add-ons)", 
+            ai: "<b>Prompt:</b> 'Act as an HR Director. Explain how to use a third-party Add-on (like Form Timer) to limit how long a user has to complete a form once they open it. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the 3-dot menu > 'Get add-ons'.<br>2. Search for 'Form Timer' and install it.<br>3. Click the 'Puzzle Piece' icon at the top of the form.<br>4. Configure the timer duration (e.g., 30 minutes).<br>5. The add-on generates a specific link that tracks the user's start and end times, automatically closing the form when time expires." 
+        },
+        { 
+            id: 9, 
+            title: "Collaborative Editing (Owner vs. Editor)", 
+            ai: "<b>Prompt:</b> 'Explain how to invite a teammate to edit a form. What is the difference between 'Add collaborator' and 'Send form'? Use an analogy. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the 3-dot menu > 'Add collaborators'.<br>2. Enter their email. They can now see the 'Responses' and edit questions.<br>3. **Warning:** Do not give this link to people who should only be *answering* the form.<br>4. For respondents, use the 'Send' button to get the 'Shortened URL'.<br>5. This ensures your internal logic isn't accidentally modified by the public." 
+        },
+        { 
+            id: 10, 
+            title: "Data Visualization (Summary Charts)", 
+            ai: "<b>Prompt:</b> 'Explain how to access the built-in 'Summary' charts. How can I copy these charts into a Google Slide deck for a presentation? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to the 'Responses' tab.<br>2. Review the 'Summary' view—Google automatically generates pie charts and bar graphs for your data.<br>3. Hover over any chart and click the 'Copy' icon in the top right corner.<br>4. Open Google Slides and paste (Ctrl+V).<br>5. Select 'Link to original' so the chart in the slide updates as new form responses come in." 
+        },
+        { 
+            id: 11, 
+            title: "Custom Confirmation Messages", 
+            ai: "<b>Prompt:</b> 'Explain how to change the 'Success' message a user sees after clicking submit. How do I include a link to a second form or a website? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to Settings > Presentation.<br>2. Click 'Edit' next to 'Confirmation message'.<br>3. Type your custom text: 'Thank you! Access your training manual here: [URL]'.<br>4. Click 'Save'.<br>5. This keeps the user moving through your 'Success Funnel' instead of hitting a dead end." 
+        },
+        { 
+            id: 12, 
+            title: "Embedding Forms in Google Sites", 
+            ai: "<b>Prompt:</b> 'Explain the technical process of embedding a form into a project website. How do I ensure it resizes correctly for mobile users? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Open your Google Site editor.<br>2. On the 'Insert' panel, select 'Forms'.<br>3. Choose your form and click 'Insert'.<br>4. Drag the corners to fit the page width.<br>5. Click 'Publish'.<br>6. Google Sites automatically handles the 'Mobile Responsiveness', ensuring the form fields are easy to tap on a smartphone screen." 
+        }
     ]
     };
 
