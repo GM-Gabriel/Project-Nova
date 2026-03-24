@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROJECT NOVA | Ultra Build v2.1</title>
+    <title>PROJECT NOVA | Technical Build v2.2</title>
     <script>
         function createFavicon() {
             const canvas = document.createElement('canvas');
@@ -69,10 +69,11 @@
         .toggle-box { display: flex; gap: 10px; margin-top: 15px; }
         .toggle-btn { background: #222; border: 1px solid #444; color: #aaa; padding: 6px 12px; border-radius: 8px; font-size: 11px; cursor: pointer; }
         .toggle-btn.active { background: #4285f4; color: white; border-color: #4285f4; }
-        .instruction-pane { margin-top: 15px; padding: 20px; background: rgba(0,0,0,0.4); border-radius: 10px; font-size: 14px; display: none; border-left: 3px solid #4285f4; line-height: 1.6;}
+        .instruction-pane { margin-top: 15px; padding: 25px; background: rgba(0,0,0,0.4); border-radius: 10px; font-size: 14px; display: none; border-left: 3px solid #4285f4; line-height: 1.8;}
 
-        /* Prompt Lab Evaluation Box */
-        .eval-box { margin-top: 20px; padding: 20px; border-radius: 15px; border: 1px solid #444; background: rgba(255,255,255,0.02); display: none; }
+        /* Prompt Lab UI */
+        .guide-box { background: rgba(66, 133, 244, 0.1); border: 1px solid #4285f4; padding: 20px; border-radius: 20px; margin-bottom: 20px; display: none; line-height: 1.6;}
+        .eval-box { margin-top: 20px; padding: 20px; border-radius: 15px; border: 1px solid #444; background: rgba(255,255,255,0.02); display: none; line-height: 1.6;}
     </style>
 </head>
 <body>
@@ -88,7 +89,7 @@
 <main>
     <div id="roadmap" class="page active">
         <h1>Project Nova Mastery</h1>
-        <p style="color:var(--text-dim)">Master 14 tools. 700 Complex Workflows. Two Paths.</p>
+        <p style="color:var(--text-dim)">Master 14 tools. Technical Workflows. Dual Paths.</p>
         <div class="grid" id="roadmap-grid"></div>
     </div>
 
@@ -103,10 +104,23 @@
     <div id="lab" class="page">
         <div style="display:flex; justify-content:space-between; align-items:center;">
             <h1>Prompt Lab</h1>
-            <button class="btn-start" style="width:auto; margin-top:0;" onclick="evaluatePrompt()">Evaluate My Prompt</button>
+            <button class="btn-start" style="width:auto; margin-top:0;" onclick="toggleGuide()">View Lab Guide</button>
         </div>
         
-        <textarea id="promptArea" style="width:100%; height:250px; background:rgba(255,255,255,0.02); border:1px solid #333; border-radius:24px; padding:30px; color:white; font-family:inherit; margin-top:20px; outline:none; font-size:16px;" placeholder="Type your prompt here... Click 'Evaluate' to check if it's optimal."></textarea>
+        <div class="guide-box" id="labGuide">
+            <h3 style="margin-top:0; color:#4285f4;">Architect Prompt Framework</h3>
+            <p><b>1. Context:</b> Start with "Act as a [Professional Role]..."</p>
+            <p><b>2. Goal:</b> State exactly what you are building.</p>
+            <p><b>3. Format:</b> Request specific outputs (e.g., "point form", "simple table", "paragraph", "using an analogy").</p>
+            <p><b>4. Constraints:</b> Set limits (e.g., "Keep it under 150 words", "Do not use jargon").</p>
+        </div>
+
+        <textarea id="promptArea" style="width:100%; height:250px; background:rgba(255,255,255,0.02); border:1px solid #333; border-radius:24px; padding:30px; color:white; font-family:inherit; margin-top:20px; outline:none; font-size:16px;" placeholder="Type your prompt here..."></textarea>
+        
+        <!-- EVALUATE BUTTON MOVED TO BOTTOM -->
+        <div style="text-align: right; margin-top: 15px;">
+            <button class="btn-start" style="width:auto; margin-top:0;" onclick="evaluatePrompt()">Evaluate My Prompt</button>
+        </div>
         
         <div id="evalFeedback" class="eval-box"></div>
     </div>
@@ -133,40 +147,55 @@
 
 <script>
     const toolsData = [
-        { id: 'gmail', name: 'Gmail', icon: 'M', desc: 'Summarization & Automation Architect' },
-        { id: 'sheets', name: 'Sheets', icon: 'S', desc: 'Data Analytics & Natural Logic' },
-        { id: 'calendar', name: 'Calendar', icon: 'C', desc: 'Time Auditing & Deep Work Mapping' },
-        { id: 'docs', name: 'Docs', icon: 'D', desc: 'Strategic Report Synthesis' },
-        { id: 'notebook', name: 'NotebookLM', icon: 'N', desc: 'Private AI Brain Builder' },
-        { id: 'keep', name: 'Keep', icon: 'K', desc: 'Cross-App Logic Bridge' },
-        { id: 'sites', name: 'Sites', icon: 'H', desc: 'Project Portal Hub Design' },
-        { id: 'appsheet', name: 'AppSheet', icon: 'A', desc: 'No-Code Mobile Integration' },
-        { id: 'script', name: 'Apps Script', icon: 'AS', desc: 'The Ghost in the Machine (Code)' },
-        { id: 'forms', name: 'Forms', icon: 'F', desc: 'Logic-Based Data Collection' },
-        { id: 'slides', name: 'Slides', icon: 'P', desc: 'Visual Strategic Narratives' },
-        { id: 'vids', name: 'Vids', icon: 'V', desc: 'AI-Driven Internal Storyboarding' },
-        { id: 'drive', name: 'Drive', icon: 'Dr', desc: 'Advanced Governance & Structure' },
-        { id: 'chat', name: 'Chat', icon: 'Ch', desc: 'Team Synergy & AI Summaries' }
+        { id: 'gmail', name: 'Gmail', icon: 'M', desc: 'Routing, Filtering & Mail Merge Automation' },
+        { id: 'sheets', name: 'Sheets', icon: 'S', desc: 'Data Analytics & Regex Logic' },
+        { id: 'calendar', name: 'Calendar', icon: 'C', desc: 'Time Auditing & API Routing' },
+        { id: 'docs', name: 'Docs', icon: 'D', desc: 'Variables & Automated Generation' },
+        { id: 'notebook', name: 'NotebookLM', icon: 'N', desc: 'Private Vector Database Querying' },
+        { id: 'keep', name: 'Keep', icon: 'K', desc: 'Cross-App Prompt Libraries' },
+        { id: 'sites', name: 'Sites', icon: 'H', desc: 'Iframe Integrations & Permissions' },
+        { id: 'appsheet', name: 'AppSheet', icon: 'A', desc: 'Relational Database Front-Ends' },
+        { id: 'script', name: 'Apps Script', icon: 'AS', desc: 'Workspace Automation (JavaScript)' },
+        { id: 'forms', name: 'Forms', icon: 'F', desc: 'Regex Validation & Logic Branching' },
+        { id: 'slides', name: 'Slides', icon: 'P', desc: 'Master Templates & Data Linking' },
+        { id: 'vids', name: 'Vids', icon: 'V', desc: 'Prompt-to-Timeline Generation' },
+        { id: 'drive', name: 'Drive', icon: 'Dr', desc: 'Advanced Search & Access Governance' },
+        { id: 'chat', name: 'Chat', icon: 'Ch', desc: 'Webhook Routing & App Integration' }
     ];
 
-    // BATCH 1: GMAIL (First 15 Deep-Dive Tasks)
+    // BATCH 1: GMAIL (Technical Deep Dive - Easiest to Hardest)
     const tasksData = {
         gmail: [
-            { id: 1, title: "The De-Escalator (Angry Client Response)", ai: "<b>Prompt:</b> 'Act as a Senior PR Manager. Read this angry client email. Draft a response that validates their frustration, takes ownership, and offers a solution without admitting legal fault. Keep it empathetic and under 150 words.'", manual: "<b>Manual Path:</b> 1. Wait 20 mins before replying. 2. Acknowledge the issue in the first sentence. 3. Detail the exact steps being taken to fix it. 4. Offer a timeline for the next update." },
-            { id: 2, title: "Action-Item Extractor (Long Threads)", ai: "<b>Prompt:</b> 'Analyze this 15-email thread. Extract every task assigned specifically to me (mentioning my name or role), the person who assigned it, and the deadline. Output as a 3-column table.'", manual: "<b>Manual Path:</b> 1. Read from the bottom up (oldest to newest). 2. Keep a Google Keep note open side-by-side. 3. Manually copy/paste names and deadlines into a bulleted list." },
-            { id: 3, title: "The Polite 'No' (Meeting Rejection)", ai: "<b>Prompt:</b> 'Act as a busy executive. Draft a polite but firm email declining this meeting invitation. Suggest that the issue be handled asynchronously via a shared Google Doc instead. Maintain a collaborative tone.'", manual: "<b>Manual Path:</b> 1. Thank them for the invite. 2. State that your calendar is locked for deep work. 3. Create a Google Doc, share the link, and ask them to drop their agenda items there." },
-            { id: 4, title: "Invoice Follow-Up Loop", ai: "<b>Prompt:</b> 'Write a 3-part email sequence for late invoice follow-ups. Email 1: Friendly nudge (2 days late). Email 2: Firm reminder (7 days late). Email 3: Final notice with late fee mention (14 days late). Output clearly separated.'", manual: "<b>Manual Path:</b> 1. Check your accounting software. 2. Draft an email attaching the original invoice. 3. Set a Calendar reminder to check back in 5 days to send the next email manually." },
-            { id: 5, title: "The Project Update Broadcaster", ai: "<b>Prompt:</b> 'Take these rough bullet points about our project's progress this week. Turn them into a highly formatted, scannable update email for stakeholders. Use bolding for key metrics and include a 'Next Steps' section.'", manual: "<b>Manual Path:</b> 1. Gather notes from your team. 2. Format into headers: 'Done', 'Doing', 'Blocked'. 3. Bold all numbers and dates so executives can skim it." },
-            { id: 6, title: "Cold Outreach Personalizer", ai: "<b>Prompt:</b> 'I am trying to sell SEO services. Here is the LinkedIn bio of my prospect. Write a 4-sentence cold email that references a specific detail from their bio in the first sentence to prove it is not automated.'", manual: "<b>Manual Path:</b> 1. Research the prospect's recent posts. 2. Write a custom first line complimenting their work. 3. Paste in your standard pitch. 4. Add a low-friction call to action." },
-            { id: 7, title: "The Double Opt-In Intro", ai: "<b>Prompt:</b> 'Write an email to Person A asking if they are open to an introduction to Person B. Explain briefly why Person B wants to connect and how it benefits Person A. Keep it highly respectful of Person A's time.'", manual: "<b>Manual Path:</b> 1. Email the 'higher status' person first privately. 2. Wait for their 'Yes'. 3. Send a new email with both parties on the To: line, explaining why you are connecting them." },
-            { id: 8, title: "Vacation Delegation Auto-Responder", ai: "<b>Prompt:</b> 'Draft an Out of Office response. State I am away from [Date] to [Date]. For urgent tech issues, direct them to [Name]. For billing, direct to [Name]. Add a humorous closing line about disconnecting.'", manual: "<b>Manual Path:</b> 1. Go to Gmail Settings > See all settings. 2. Scroll to 'Vacation responder'. 3. Type out the dates and the alternative contacts. 4. Turn responder ON." },
-            { id: 9, title: "The Legal Jargon Translator", ai: "<b>Prompt:</b> 'Act as a 5th-grade teacher. Read this vendor contract email. Summarize the 3 main obligations I am agreeing to, and point out any hidden fees. Explain it in plain English.'", manual: "<b>Manual Path:</b> 1. Read the contract line by line. 2. Highlight words like 'Indemnify' or 'Net-30'. 3. Google the terms. 4. Write a summary for yourself before signing." },
-            { id: 10, title: "Grammar & Tone Polisher", ai: "<b>Prompt:</b> 'Review this draft email. Fix all grammatical errors, but more importantly, remove any passive-aggressive phrasing. Make it sound confident and collaborative.'", manual: "<b>Manual Path:</b> 1. Read your draft out loud to catch awkward phrasing. 2. Run it through a basic spell-checker. 3. Delete filler words like 'just', 'I think', and 'maybe'." },
-            { id: 11, title: "Event RSVP Tracker Prep", ai: "<b>Prompt:</b> 'I am sending an event invite via email. Write the exact copy for the email, and give me the instructions on how to link a Google Form inside it so RSVPs auto-populate into a Sheet.'", manual: "<b>Manual Path:</b> 1. Create a Google Form with Name and Dietary Restrictions. 2. Copy the Form link. 3. Draft the email and hyperlink the words 'Click Here to RSVP'." },
-            { id: 12, title: "The Pitch Rejection Pivot", ai: "<b>Prompt:</b> 'A client just rejected our proposal because of budget. Write a response thanking them for their time, leaving the door open for the future, and offering a smaller, 'down-sell' package instead.'", manual: "<b>Manual Path:</b> 1. Acknowledge their budget constraints. 2. Do not argue. 3. Propose a stripped-down version of your service for half the price as an alternative." },
-            { id: 13, title: "Newsletter Synthesizer", ai: "<b>Prompt:</b> 'I have pasted 4 different industry newsletters below. Synthesize the overlapping trends into one master paragraph that I can send to my team as 'This Week's Industry Insights'.'", manual: "<b>Manual Path:</b> 1. Read all 4 newsletters. 2. Look for topics mentioned in at least two of them. 3. Write a brief summary of those specific topics and link the original sources." },
-            { id: 14, title: "The 'Bump' Email", ai: "<b>Prompt:</b> 'I emailed a busy client a proposal 4 days ago with no response. Write a 2-sentence 'bump' email that brings the thread to the top of their inbox without sounding annoying or demanding.'", manual: "<b>Manual Path:</b> 1. Find the sent email. 2. Click Reply. 3. Type: 'Hi [Name], bringing this to the top of your inbox. Let me know if you have any questions!'." },
-            { id: 15, title: "Meeting Prep Brief", ai: "<b>Prompt:</b> 'I have a meeting with [Company] tomorrow. Based on this thread of our past conversations, generate a 5-point cheat sheet of what they care about most, so I can review it 5 minutes before the call.'", manual: "<b>Manual Path:</b> 1. Search the client's name in Gmail. 2. Skim the last 6 months of emails. 3. Note their pain points on a physical notepad." }
+            { 
+                id: 1, 
+                title: "Automated Workflow Routing (Filters)", 
+                ai: "<b>Prompt:</b> 'I need to create a Gmail filter that bypasses my inbox for system alerts. Write the step-by-step logic on how to filter emails containing 'Server Down' so they skip the inbox, apply a red 'URGENT' label, and never go to spam. Format this as a simple table.'", 
+                manual: "<b>Manual Path:</b><br>1. Click the 'Show search options' icon in the Gmail search box.<br>2. In the 'Includes the words' field, type your specific criteria (e.g., 'Server Down').<br>3. Click the 'Create filter' button at the bottom of the dropdown.<br>4. Check the box for 'Skip the Inbox (Archive it)'.<br>5. Check 'Apply the label' and create a new label called 'URGENT'.<br>6. Check 'Never send it to Spam' to ensure delivery.<br>7. Check 'Also apply filter to matching conversations' to retroactively clean your inbox.<br>8. Click 'Create filter' to execute the automation." 
+            },
+            { 
+                id: 2, 
+                title: "Advanced Boolean Search Querying", 
+                ai: "<b>Prompt:</b> 'Act as a database admin. Give me 5 advanced Regex/Boolean search strings I can paste into the Gmail search bar to find: Large attachments over 10MB, emails older than 2 years, and emails from specific domains excluding promotional labels. Use point form.'", 
+                manual: "<b>Manual Path:</b><br>1. Click directly into the main search bar at the top of Gmail.<br>2. To find large files tying up storage, type <code>larger:10M</code>.<br>3. To find specific old data, append <code>older_than:2y</code>.<br>4. To exclude marketing emails from your query, append <code>-label:promotions</code>.<br>5. To search for exact phrase matches, use quotation marks (e.g., <code>\"Q3 Financial Report\"</code>).<br>6. To find emails with specific file types, type <code>filename:pdf</code>.<br>7. Combine them for advanced queries: <code>larger:5M older_than:6m filename:pdf -label:promotions</code>.<br>8. Press Enter to instantly audit and filter your inbox database." 
+            },
+            { 
+                id: 3, 
+                title: "Workspace Mail Merge Automation", 
+                ai: "<b>Prompt:</b> 'Explain the exact formatting required in a Google Sheet so I can use it as a database for Gmail's native Mail Merge feature. Include how to format the header rows for variables like First Name and Company. Explain using an analogy.'", 
+                manual: "<b>Manual Path:</b><br>1. Open a new Compose window in Gmail.<br>2. Click the 'Use Mail Merge' icon (a person with a gear) located next to the To: field.<br>3. Toggle Mail Merge to the ON position.<br>4. In the To: field, select the option to add a Google Spreadsheet.<br>5. Choose your prepared contact list spreadsheet.<br>6. Type your email body normally.<br>7. Type the <code>@</code> symbol to open the variable menu and select columns from your Sheet (e.g., @First_Name) to inject dynamic data.<br>8. Review the preview pane for the first recipient, then click 'Send All'." 
+            },
+            { 
+                id: 4, 
+                title: "Zero-Trust Confidential Data Transfer", 
+                ai: "<b>Prompt:</b> 'I need to send API keys to a developer securely via Gmail. Write a 1-paragraph explanation of how Gmail's Confidential Mode handles data encryption and SMS 2FA, and why it prevents the recipient from downloading the text.'", 
+                manual: "<b>Manual Path:</b><br>1. Click 'Compose' to start a new email containing the sensitive data.<br>2. Click the 'Toggle confidential mode' icon (lock with a clock) at the bottom toolbar.<br>3. Set the expiration timeframe (e.g., 'Expires in 1 week').<br>4. Under the 'Require passcode' section, select 'SMS passcode' instead of 'No SMS passcode'.<br>5. Click 'Save' to apply the encryption policy.<br>6. When you click Send, a prompt will ask for the recipient's phone number.<br>7. The recipient receives an email, but must enter the code texted to their phone to unlock the content.<br>8. To revoke access immediately, go to your Sent folder, open the email, and click 'Remove access'." 
+            },
+            { 
+                id: 5, 
+                title: "HTML/XML Signature Table Injection", 
+                ai: "<b>Prompt:</b> 'Provide the raw HTML code for a 2-column email signature table. Column 1 should be a placeholder for a logo (width 100px), and Column 2 should contain placeholders for Name, Title, and a hyperlinked phone number. Output only the code.'", 
+                manual: "<b>Manual Path:</b><br>1. Open a blank Google Doc (this acts as a safe visual HTML editor).<br>2. Go to Insert > Table and create a 2x1 table.<br>3. Insert your logo image in the left cell and type your contact variables in the right cell.<br>4. Highlight the table, go to Table Properties, and set the border width to 0pt to make the gridlines invisible.<br>5. Highlight the entire invisible table structure and copy it (Ctrl+C).<br>6. Go to Gmail Settings (gear icon) > 'See all settings'.<br>7. Scroll down to the 'Signature' section, click 'Create new', and paste (Ctrl+V) the table into the text box.<br>8. Scroll to the bottom and click 'Save Changes' to permanently inject the formatted table into your outgoing mail." 
+            }
         ]
     };
 
@@ -197,7 +226,7 @@
 
     function openPortal(toolId) {
         const tool = toolsData.find(t => t.id === toolId);
-        document.getElementById('p-tool-label').innerText = "MASTERING";
+        document.getElementById('p-tool-label').innerText = "TECHNICAL MASTERY";
         document.getElementById('p-tool-name').innerText = tool.name;
         document.getElementById('portal').style.display = 'block';
         
@@ -206,7 +235,7 @@
         
         const tasks = tasksData[toolId] || [];
         if(tasks.length === 0) {
-            list.innerHTML = "<p style='color:var(--text-dim)'>Module data loading in future update...</p>";
+            list.innerHTML = "<p style='color:var(--text-dim)'>Technical module loading in next database update...</p>";
             return;
         }
 
@@ -214,8 +243,8 @@
             const item = document.createElement('div');
             item.className = 'task-item';
             item.innerHTML = `
-                <div style="display:flex; justify-content:space-between;">
-                    <b>${task.title}</b>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <b style="font-size: 16px; color: #fff;">${task.title}</b>
                     <input type="checkbox" style="transform:scale(1.5); cursor:pointer;" ${userProgress.tasks.includes(toolId + task.id) ? 'checked' : ''} onchange="toggleTask('${toolId}', ${task.id})">
                 </div>
                 <div class="toggle-box">
@@ -244,9 +273,15 @@
     }
 
     function closePortal() { document.getElementById('portal').style.display = 'none'; }
-    function hardReset() { if(confirm("Are you sure?")) { localStorage.clear(); location.reload(); } }
+    
+    function toggleGuide() { 
+        const g = document.getElementById('labGuide');
+        g.style.display = g.style.display === 'block' ? 'none' : 'block';
+    }
 
-    // PROMPT EVALUATOR LOGIC
+    function hardReset() { if(confirm("Are you sure? This deletes all local browser data.")) { localStorage.clear(); location.reload(); } }
+
+    // UPGRADED PROMPT EVALUATOR LOGIC
     function evaluatePrompt() {
         const text = document.getElementById('promptArea').value.toLowerCase();
         const feedbackBox = document.getElementById('evalFeedback');
@@ -254,7 +289,7 @@
         let suggestions = [];
 
         if(text.length < 10) {
-            feedbackBox.innerHTML = "<span style='color:#d96570;'>⚠️ Prompt is too short to evaluate. Type a full command.</span>";
+            feedbackBox.innerHTML = "<span style='color:#d96570;'>⚠️ Prompt is too short. Please type a full command.</span>";
             feedbackBox.style.display = "block";
             return;
         }
@@ -263,25 +298,27 @@
         if (text.includes("act as") || text.includes("you are") || text.includes("role") || text.includes("persona")) {
             score++;
         } else {
-            suggestions.push("🔹 <b>Missing Context:</b> Tell the AI who it is. (e.g., 'Act as a Data Analyst...')");
+            suggestions.push("🔹 <b>Missing Context:</b> Tell the AI who it is. (e.g., 'Act as a Database Admin...')");
         }
 
-        // Check 2: Format
-        if (text.includes("table") || text.includes("bullet") || text.includes("format") || text.includes("list") || text.includes("email") || text.includes("script")) {
+        // Check 2: Format (Expanded List)
+        const formats = ["table", "bullet", "format", "list", "point form", "paragraph", "simple table", "analogy", "code", "script"];
+        const hasFormat = formats.some(format => text.includes(format));
+        if (hasFormat) {
             score++;
         } else {
-            suggestions.push("🔹 <b>Missing Format:</b> Specify exactly how you want the output. (e.g., 'Give me a 3-column table' or 'Write a 2-paragraph email').");
+            suggestions.push("🔹 <b>Missing Format:</b> Specify exactly how you want the output. (e.g., 'Give me a simple table' or 'Explain using an analogy').");
         }
 
         // Check 3: Constraints
-        if (text.includes("tone") || text.includes("limit") || text.includes("under") || text.includes("only") || text.includes("do not")) {
+        if (text.includes("tone") || text.includes("limit") || text.includes("under") || text.includes("only") || text.includes("do not") || text.includes("exclude") || text.includes("exactly")) {
             score++;
         } else {
-            suggestions.push("🔹 <b>Missing Constraints:</b> Add guardrails to stop the AI from rambling. (e.g., 'Keep it under 150 words' or 'Use a highly professional tone').");
+            suggestions.push("🔹 <b>Missing Constraints:</b> Add guardrails. (e.g., 'Output exactly 5 items' or 'Do not use jargon').");
         }
 
         if (score === 3) {
-            feedbackBox.innerHTML = "<span style='color:#4285f4; font-size:16px;'>✅ <b>Optimal Architect Prompt!</b><br><br>You have established Context, defined the Output Format, and set clear Constraints. Copy this and use it!</span>";
+            feedbackBox.innerHTML = "<span style='color:#4285f4; font-size:16px;'>✅ <b>Optimal Architect Prompt!</b><br><br>You have established Context, defined the Output Format, and set clear Constraints. Copy this to Gemini!</span>";
             feedbackBox.style.borderColor = "#4285f4";
         } else {
             feedbackBox.innerHTML = "<span style='color:#d96570; font-size:16px;'>⚠️ <b>Optimization Needed:</b></span><br><br>" + suggestions.join("<br><br>");
