@@ -379,6 +379,68 @@
             ai: "<b>Prompt:</b> 'Act as a Software Developer. Explain how to find the unique 'Event ID' or 'UID' for a calendar entry. Why is this ID critical when using automation tools like Zapier or Apps Script to update an event? Show step by step.'", 
             manual: "<b>Manual Path:</b><br>1. There is no 'Right Click > Copy ID' in the standard UI. You must use the API Explorer.<br>2. Go to the Google Calendar API documentation page (Developers.google.com).<br>3. Use the <code>Events: list</code> method.<br>4. Enter your calendar ID (usually your email).<br>5. Execute the query. The JSON response will list every event.<br>6. Look for the <code>\"id\": \"...\"</code> string for your specific event.<br>7. Use this string in your script to target that exact event for automated title changes, time shifts, or deletions." 
         }
+    ],
+        docs: [
+        { 
+            id: 1, 
+            title: "Semantic Document Mapping (Outline Logic)", 
+            ai: "<b>Prompt:</b> 'Act as a Technical Writer. Explain how to use Heading styles (H1, H2, H3) to automatically generate a clickable Table of Contents. Explain why using bold text instead of styles breaks the document structure. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Highlight your main title and select 'Heading 1' from the styles dropdown.<br>2. Highlight sub-sections and select 'Heading 2' or 'Heading 3'.<br>3. Click the page where you want the table to appear.<br>4. Go to Insert > Table of contents.<br>5. Choose the 'With page numbers' or 'With blue links' option.<br>6. To update the list after adding more sections, click the 'Refresh' icon on the TOC box.<br>7. Use the 'Outline' view on the left sidebar (View > Show outline) to navigate the document's technical hierarchy instantly." 
+        },
+        { 
+            id: 2, 
+            title: "Smart Chips & Data Referencing", 
+            ai: "<b>Prompt:</b> 'Explain how to use the @ menu to insert 'Smart Chips' for People, Files, and Calendar Events. Explain how these chips provide live data previews compared to standard hyperlinks. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Type the <code>@</code> symbol anywhere in your document.<br>2. To link a colleague, type their name after the @ and select them. They will receive a notification to share the doc.<br>3. To link a file, type the file name after @ and select it from the Drive search results.<br>4. Hover over a file chip to see a 'Preview' without leaving the doc.<br>5. To link a meeting, type @ and select 'Meeting notes' or a specific calendar event.<br>6. This creates a bi-directional link that updates metadata (like file name changes) in real-time." 
+        },
+        { 
+            id: 3, 
+            title: "Variable Injection (Placeholders)", 
+            ai: "<b>Prompt:</b> 'Act as a Legal Ops Specialist. Explain how to use the 'Variables' feature in Google Docs to create a template where I can update a client name once and have it change in 50 places throughout the contract. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to Insert > Smart Chips > Variables.<br>2. Click 'Create new variable' and name it (e.g., 'Client_Name').<br>3. Type your document, and whenever the client name is needed, go to Insert > Smart Chips > Variables and select 'Client_Name'.<br>4. A variable chip appears in the text.<br>5. To update the whole doc, click any 'Client_Name' chip and type the new value.<br>6. Press Enter. Every instance of that variable in the document updates simultaneously." 
+        },
+        { 
+            id: 4, 
+            title: "Pageless Formatting for Code/Data", 
+            ai: "<b>Prompt:</b> 'Act as a Software Developer. Explain the benefits of 'Pageless' mode for viewing wide tables or long code blocks. Explain how to toggle this and adjust the background color for 'Dark Mode' drafting. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to File > Page setup.<br>2. At the top of the dialog box, select the 'Pageless' tab.<br>3. (Optional) Change the 'Background color' to a dark grey for eye strain relief.<br>4. Click 'OK'. The document now acts as a continuous canvas without page breaks.<br>5. Insert a wide table (Insert > Table). Notice you can now scroll horizontally without the text cutting off.<br>6. Images and tables will automatically scale to the width of your browser window." 
+        },
+        { 
+            id: 5, 
+            title: "Version History & Named Versions", 
+            ai: "<b>Prompt:</b> 'Act as a Project Manager. Explain how to 'Name' a specific version of a document before a major rewrite so you can easily revert to it. Explain how to compare two different versions. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to File > Version history > Name current version.<br>2. Give it a technical label (e.g., 'Pre-Q3 Final Edit').<br>3. To view past versions, go to File > Version history > See version history.<br>4. Toggle 'Show changes' at the bottom to see exactly what text was added (green) or deleted (red).<br>5. Click the 3-dot menu next to a named version to 'Restore this version' if needed.<br>6. Use 'Copy of named version' to branch out a new document without losing the current progress." 
+        },
+        { 
+            id: 6, 
+            title: "Custom Building Blocks", 
+            ai: "<b>Prompt:</b> 'Explain how to create a 'Custom Building Block' for a reusable Project Status table. Explain how to save this component so it can be inserted into any new document using the @ menu. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Design a table or text block you use frequently (e.g., a meeting agenda template).<br>2. Highlight the entire block.<br>3. Right-click and select 'Save as custom building block'.<br>4. Give it a name (e.g., 'Status_Table') and click 'Save'.<br>5. To use it in a new doc, type <code>@Status_Table</code> and press Enter.<br>6. The entire pre-formatted structure will be injected instantly, maintaining all styles and links." 
+        },
+        { 
+            id: 7, 
+            title: "Equation Editor & LaTeX Logic", 
+            ai: "<b>Prompt:</b> 'Act as an Engineer. Explain how to use the Equation Editor to insert complex mathematical formulas. Provide a list of 5 common LaTeX-style shortcuts (like \\fraction) that work in the editor. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to Insert > Equation. A new toolbar appears.<br>2. Click 'New Equation'.<br>3. Type backslash commands for fast entry: <code>\\frac</code> for fractions, <code>\\sqrt</code> for square roots.<br>4. Use the arrow keys to navigate out of the denominator or subscript.<br>5. For Greek letters, type <code>\\delta</code> or <code>\\pi</code> followed by a space.<br>6. These equations stay editable and scale perfectly with the document font size." 
+        },
+        { 
+            id: 8, 
+            title: "Document Approvals Workflow", 
+            ai: "<b>Prompt:</b> 'Act as an Operations Lead. Explain how to use the 'Approvals' feature to lock a document until specific stakeholders have reviewed and signed off on it digitally. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to File > Approvals.<br>2. Click 'Make a request'.<br>3. Add the email addresses of the approvers.<br>4. (Optional) Set a due date and check 'Allow approvers to edit the file'.<br>5. Click 'Send request'. The document is now 'Pending Approval'.<br>6. Once all parties click 'Approve', the document is automatically locked to prevent further changes.<br>7. To edit again, you must 'Unlock' the file, which resets the approval status." 
+        },
+        { 
+            id: 9, 
+            title: "Comparison Tool (Diff Checking)", 
+            ai: "<b>Prompt:</b> 'Explain how to use the 'Compare Documents' tool to find every single difference between two similar files (e.g., a contract and its counter-offer). Output as a 1-paragraph explanation. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Open the original version of your document.<br>2. Go to Tools > Compare documents.<br>3. Select the 'Comparison document' (the one with the edits) from your Drive.<br>4. Select which user the changes should be attributed to.<br>5. Click 'Compare'.<br>6. Google Docs creates a third, new document. All differences are displayed as 'Suggestions' that you can accept or reject one by one." 
+        },
+        { 
+            id: 10, 
+            title: "Advanced Publishing (Web Iframe)", 
+            ai: "<b>Prompt:</b> 'Act as a Web Developer. Explain how to use 'Publish to the web' to generate an Embed code (Iframe) for a document. Explain how this allows the doc to be viewed as a live webpage. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to File > Share > Publish to the web.<br>2. Select the 'Embed' tab.<br>3. Click 'Publish'.<br>4. Copy the <code>&lt;iframe&gt;</code> code provided.<br>5. Paste this code into a Google Site or any HTML editor.<br>6. The document will now appear live on the site.<br>7. Any changes you make in the Google Doc will automatically sync and refresh on the published webpage every few minutes." 
+        }
     ]
     };
 
