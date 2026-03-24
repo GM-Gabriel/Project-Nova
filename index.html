@@ -1033,6 +1033,80 @@
             ai: "<b>Prompt:</b> 'Explain how to export the final video. What file format is used, and how do I save it directly to Google Drive for sharing? Show step by step.'", 
             manual: "<b>Manual Path:</b><br>1. Once finished, click the 'Export' button.<br>2. Select 'MP4'.<br>3. Choose your resolution (1080p is recommended for technical clarity).<br>4. Google Vids will process the video in the cloud.<br>5. Once done, it is saved in your Google Drive 'Vids' folder and you receive a notification link." 
         }
+    ],
+        drive: [
+        { 
+            id: 1, 
+            title: "Shared Drives vs. My Drive", 
+            ai: "<b>Prompt:</b> 'Act as an IT Admin. Explain the difference in 'Ownership' between files in My Drive and files in a Shared Drive. Why is a Shared Drive better for a company project? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. In the left sidebar, click 'Shared drives'.<br>2. Click '+ New' to create a drive (e.g., 'Nova Project Assets').<br>3. Add members and set their roles (Manager, Content Manager, Contributor, Commenter, or Viewer).<br>4. **Technical Note:** In a Shared Drive, the *organization* owns the files, not the individual. If an employee leaves, the files stay in the project folder automatically." 
+        },
+        { 
+            id: 2, 
+            title: "Advanced Search Operators", 
+            ai: "<b>Prompt:</b> 'Act as a Data Librarian. Provide a list of 5 advanced search operators (e.g., type:pdf, owner:me) to find a specific file in a library of 10,000 documents. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the search bar at the top of Drive.<br>2. Type <code>type:spreadsheet</code> to see only Sheets.<br>3. Combine them: <code>owner:me type:pdf</code> to find PDFs you created.<br>4. Use <code>after:2025-01-01</code> to find recent files.<br>5. Use <code>app:\"Google Sites\"</code> to find site project files specifically.<br>6. Click the 'Search options' icon (three sliders) for a visual interface for these filters." 
+        },
+        { 
+            id: 3, 
+            title: "File Versioning (Non-Google Files)", 
+            ai: "<b>Prompt:</b> 'Explain how to manage versions for non-Google files (like a .zip or .exe). How do I upload a new version without changing the shareable link? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Right-click a non-Google file in Drive.<br>2. Select 'File information' > 'Manage versions'.<br>3. Click 'Upload new version'.<br>4. Drive will store the new file under the same ID, meaning all existing links still work.<br>5. **Warning:** Drive keeps older versions for only 30 days unless you click the 3-dot menu and select 'Keep forever'." 
+        },
+        { 
+            id: 4, 
+            title: "Google Drive for Desktop (Mirror vs. Stream)", 
+            ai: "<b>Prompt:</b> 'Act as a Systems Engineer. Explain the technical difference between 'Streaming' files and 'Mirroring' files using the Drive for Desktop app. Which is better for a small SSD? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Download and install 'Google Drive for Desktop'.<br>2. Open 'Preferences'.<br>3. Choose 'Stream files' to see everything in your cloud as a virtual drive without taking up local space.<br>4. Choose 'Mirror files' to keep a full copy of every file on your local hard drive for offline access.<br>5. Right-click any specific folder in Windows Explorer/Mac Finder and select 'Offline access' > 'Available offline' to mix both methods." 
+        },
+        { 
+            id: 5, 
+            title: "Shortcut Logic (Multi-Location Files)", 
+            ai: "<b>Prompt:</b> 'Explain the purpose of 'Shortcuts' in Google Drive. How do I make one file appear in three different project folders without creating duplicates? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Right-click a file.<br>2. Select 'Organize' > 'Add shortcut'.<br>3. Navigate to the secondary folder and click 'Add'.<br>4. The shortcut (marked with a small arrow icon) acts as a portal.<br>5. Editing the file in Folder A updates it for everyone looking at Folder B or C. This prevents 'Version Chaos'." 
+        },
+        { 
+            id: 6, 
+            title: "Priority View & Workspace Organization", 
+            ai: "<b>Prompt:</b> 'Act as a Productivity Consultant. Explain how to use 'Priority View' and 'Workspaces' to group related files from different folders into one temporary dashboard. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click 'Priority' in the left sidebar.<br>2. Under 'Workspaces', click 'Create Workspace'.<br>3. Name it (e.g., 'Morning Review').<br>4. Click 'Add files' and pick documents from anywhere in your Drive.<br>5. This creates a virtual collection of files you need right now without moving their original locations." 
+        },
+        { 
+            id: 7, 
+            title: "Shared Links & Expiration Dates", 
+            ai: "<b>Prompt:</b> 'Explain how to set a 'Temporary' share link that expires after 7 days. Note: This requires a Google Workspace Business/Education account. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click 'Share' on a file.<br>2. Enter an email address.<br>3. Next to their role (e.g., Viewer), click the dropdown and select 'Add expiration'.<br>4. Select the date and time the access should vanish.<br>5. Click 'Done'. This is critical for granting technical access to contractors or external auditors." 
+        },
+        { 
+            id: 8, 
+            title: "The 'Approvals' Workflow in Drive", 
+            ai: "<b>Prompt:</b> 'Act as a Compliance Officer. Explain how to send a PDF or Image for a formal 'Approval' within Drive. How does the file get locked during this process? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Right-click a file (PDF, Doc, etc.).<br>2. Select 'File information' > 'Approvals'.<br>3. Click 'Make a request' and add approvers.<br>4. Check 'Lock file before sending' to prevent edits during review.<br>5. Once approved, the file receives a 'Final' status badge in its metadata." 
+        },
+        { 
+            id: 9, 
+            title: "Storage Quota Management", 
+            ai: "<b>Prompt:</b> 'Explain how to find the 'Storage' view to see which files are taking up the most space. How do I find large files hiding in Shared Drives? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click 'Storage' in the bottom-left sidebar.<br>2. Drive will list every file in your system, sorted by size (largest at the top).<br>3. Review large video files or zip archives that are no longer needed.<br>4. To check Shared Drive usage, go to the Admin Console (if you have access) or view the 'Storage' tab within each individual Shared Drive's settings." 
+        },
+        { 
+            id: 10, 
+            title: "Metadata & File Descriptions", 
+            ai: "<b>Prompt:</b> 'Act as a Data Engineer. Explain how to add a technical 'Description' to a file's metadata. How does this help the Drive search engine find it? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Right-click a file and select 'File information' > 'Details'.<br>2. Scroll down in the right sidebar to the 'Description' field.<br>3. Type technical keywords or a summary (e.g., 'Raw telemetry data for Project Nova').<br>4. When you search for 'telemetry' later, this file will appear even if the word isn't in the filename." 
+        },
+        { 
+            id: 11, 
+            title: "Activity Audit Logs", 
+            ai: "<b>Prompt:</b> 'Explain how to use the 'Activity' tab to see exactly when a file was moved, renamed, or shared, and by whom. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Select a file or folder.<br>2. Click the 'View details' (circle with an 'i') icon in the top right.<br>3. Switch to the 'Activity' tab in the sidebar.<br>4. Scroll through the chronological log of every action taken on that item.<br>5. This is the first place to look when a technical file 'disappears' or is modified unexpectedly." 
+        },
+        { 
+            id: 12, 
+            title: "Offline Mode (Browser-Based)", 
+            ai: "<b>Prompt:</b> 'Explain how to enable 'Offline Mode' in the Chrome browser so you can edit Docs/Sheets/Slides without an internet connection. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to Drive Settings (Gear icon).<br>2. Under 'General', check the box for 'Offline'.<br>3. Install the 'Google Docs Offline' Chrome extension if prompted.<br>4. Once synced, you can go to drive.google.com while offline.<br>5. Any changes you make will be cached and uploaded to the cloud the next time you connect to Wi-Fi." 
+        }
     ]
     };
 
