@@ -515,6 +515,68 @@
             ai: "<b>Prompt:</b> 'Explain Google's privacy policy regarding NotebookLM. Does the data I upload train the global model? How can I ensure enterprise-level data security? Show step by step.'", 
             manual: "<b>Manual Path:</b><br>1. Access the 'Privacy' link at the bottom of the NotebookLM home screen.<br>2. Review the core policy: 'Your personal data is not used to train Google’s models'.<br>3. Note that this applies only to the personal/pro versions; Workspace admins have additional controls.<br>4. To completely wipe data, you must delete the entire Notebook.<br>5. Deleting a source from a notebook removes it from that AI's context window permanently." 
         }
+    ],
+        keep: [
+        { 
+            id: 1, 
+            title: "Semantic Labeling (The Folder-less System)", 
+            ai: "<b>Prompt:</b> 'Act as a Knowledge Manager. Explain the 'Label' system in Google Keep and why it is superior to traditional folders for organizing AI prompts. Provide a strategy for using nested-style labels (e.g., PROMPT/GMAIL). Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Create a new note and type your content.<br>2. Click the 3-dot menu and select 'Add label'.<br>3. Type a category name (e.g., 'Work/Projects') and press Enter.<br>4. To view all notes in that category, click the label name in the left sidebar.<br>5. Note: You can add multiple labels to one note, allowing a single prompt to exist in both 'Templates' and 'Marketing' simultaneously.<br>6. Use the 'Edit labels' button in the sidebar to rename or delete categories globally." 
+        },
+        { 
+            id: 2, 
+            title: "OCR Data Extraction (Image-to-Text)", 
+            ai: "<b>Prompt:</b> 'Act as a Digitization Specialist. Explain how to use Google Keep's Optical Character Recognition (OCR) to extract text from a photo of a whiteboard or a physical document. Output as a simple table. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Open the Keep mobile app and click the camera icon to take a photo of text.<br>2. Once the photo is in the note, click the image to open it.<br>3. Click the 3-dot menu in the top right corner.<br>4. Select 'Grab image text'.<br>5. The AI will scan the image and paste the editable text directly below the photo in the note.<br>6. On desktop, right-click an uploaded image in a note to find the same 'Grab image text' option." 
+        },
+        { 
+            id: 3, 
+            title: "Color Coding & Visual Prioritization", 
+            ai: "<b>Prompt:</b> 'Explain how to use the 12-color palette in Keep to create a visual priority system (e.g., Red = Urgent, Blue = Reference). Explain how to filter your entire library by color. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Open a note and click the 'Background options' (paint palette) icon.<br>2. Select a color or a categorical background image.<br>3. To find all notes of that color, click the search bar at the top of Keep.<br>4. Under the 'Colors' section in the search results, click the specific color bubble.<br>5. This instantly filters your dashboard to show only 'Urgent' or 'Reference' items without needing to read titles." 
+        },
+        { 
+            id: 4, 
+            title: "The 'Keep-to-Doc' Pipeline", 
+            ai: "<b>Prompt:</b> 'Act as a Content Architect. I have 10 separate notes that form a rough draft. Explain how to export all selected Keep notes into a single Google Doc for final formatting. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. In the main Keep grid, hover over the first note and click the checkmark in the top-left corner.<br>2. Select all other notes you wish to export.<br>3. Click the 3-dot menu in the top-right of the screen.<br>4. Select 'Copy to Google Docs'.<br>5. A small pop-up will appear at the bottom-left saying 'Saved to Google Docs'. Click 'Open Doc'.<br>6. All notes are now merged into one document, separated by horizontal lines." 
+        },
+        { 
+            id: 5, 
+            title: "Location-Based Contextual Alerts", 
+            ai: "<b>Prompt:</b> 'Explain how to set a 'Location Reminder' on a Keep note so it triggers a notification only when I arrive at a specific GPS coordinate (like an office or a hardware store). Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Open a note and click the 'Remind me' (bell) icon.<br>2. Select 'Pick place'.<br>3. Type the name or address of the location (e.g., 'Home' or 'Target').<br>4. Click 'Save'.<br>5. When your phone's GPS detects you are at that location, the note will pop up as a high-priority notification.<br>6. This is ideal for 'Store-specific' lists or 'Office-only' task reminders." 
+        },
+        { 
+            id: 6, 
+            title: "Collaborative Logic (Shared Sticky Notes)", 
+            ai: "<b>Prompt:</b> 'Act as a Project Lead. Explain how to add a collaborator to a specific Keep note and how to tell who made the last edit. Explain using a simple table. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the 'Collaborator' (person) icon at the bottom of a note.<br>2. Enter the email address of the person you want to invite and click 'Save'.<br>3. The note will now appear on their Keep dashboard in real-time.<br>4. Any checkboxes they check or text they add will sync across both accounts.<br>5. Look at the bottom of the note to see a timestamp of the 'Last edited' time.<br>6. Note: Keep does not have a detailed 'Version History' like Docs; once text is deleted by a collaborator, it is gone unless you click Undo immediately." 
+        },
+        { 
+            id: 7, 
+            title: "The Sidebar Integration (The Power User Workflow)", 
+            ai: "<b>Prompt:</b> 'Explain how to access the Keep sidebar while working inside Gmail or Google Calendar. How can I drag and drop text from an email directly into a Keep note? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Open Gmail or Calendar in your browser.<br>2. Look at the narrow vertical 'Side Panel' on the far right of the screen.<br>3. Click the yellow Keep icon.<br>4. To create a note from an email, simply click '+ Take a note' while the email is open. Keep will automatically link the email to the note.<br>5. You can also highlight text in an email and drag it directly into the Keep sidebar to save it as a new entry." 
+        },
+        { 
+            id: 8, 
+            title: "Recursive Checklists (Indentation Logic)", 
+            ai: "<b>Prompt:</b> 'Explain how to use 'Show Checkboxes' and 'Nested Checkboxes' to create a sub-task hierarchy within a Keep note. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the 3-dot menu and select 'Show checkboxes'.<br>2. Type a main task and press Enter.<br>3. Type a sub-task, then hover over the 6-dot icon to the left of the checkbox.<br>4. Drag the sub-task to the right to indent it under the main task.<br>5. When you check off the main task, all nested sub-tasks will be checked and hidden automatically." 
+        },
+        { 
+            id: 9, 
+            title: "Voice-to-Text Transcription", 
+            ai: "<b>Prompt:</b> 'Act as a Field Engineer. Explain how to use the 'Voice Memo' feature in the Keep mobile app to record audio that is automatically transcribed into text. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Open the Keep app on your phone.<br>2. Click the 'Microphone' icon at the bottom.<br>3. Speak your technical notes clearly.<br>4. Keep will save the original audio file AND a perfectly transcribed text version within the same note.<br>5. This is the fastest way to capture 'Shower thoughts' or field observations without typing." 
+        },
+        { 
+            id: 10, 
+            title: "Archive vs. Delete (Data Governance)", 
+            ai: "<b>Prompt:</b> 'Explain the technical difference between 'Archiving' a note and 'Deleting' it. Where does the data go, and how long do I have to recover a deleted note? Use a paragraph. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. To clean your workspace without losing data, click the 'Archive' (box with down arrow) icon. The note disappears from the main grid but remains searchable.<br>2. To remove a note entirely, click the 3-dot menu > 'Delete note'.<br>3. Deleted notes go to the 'Trash' folder in the sidebar.<br>4. Note: Items in the Trash are permanently deleted after **7 days**.<br>5. Archived items stay in the 'Archive' folder indefinitely until you 'Unarchive' them." 
+        }
     ]
     };
 
