@@ -441,6 +441,80 @@
             ai: "<b>Prompt:</b> 'Act as a Web Developer. Explain how to use 'Publish to the web' to generate an Embed code (Iframe) for a document. Explain how this allows the doc to be viewed as a live webpage. Show step by step.'", 
             manual: "<b>Manual Path:</b><br>1. Go to File > Share > Publish to the web.<br>2. Select the 'Embed' tab.<br>3. Click 'Publish'.<br>4. Copy the <code>&lt;iframe&gt;</code> code provided.<br>5. Paste this code into a Google Site or any HTML editor.<br>6. The document will now appear live on the site.<br>7. Any changes you make in the Google Doc will automatically sync and refresh on the published webpage every few minutes." 
         }
+    ],
+        notebook: [
+        { 
+            id: 1, 
+            title: "Source Grounding Architecture", 
+            ai: "<b>Prompt:</b> 'Act as an AI Research Lead. Explain how NotebookLM uses 'Source Grounding' to prevent hallucinations by only answering from uploaded documents. Explain why this is safer than a general LLM. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Open NotebookLM and create a 'New Notebook'.<br>2. Click the '+' icon next to 'Sources' in the left sidebar.<br>3. Upload your technical PDFs, text files, or paste a website URL.<br>4. Wait for the 'Source Guide' to generate a summary of each document.<br>5. Type a question in the chat box.<br>6. Look at the 'Citations' (numbered bubbles) at the end of the response.<br>7. Click a citation to see the exact paragraph in the original source that provided the data.<br>8. This ensures every claim made by the AI is tethered to a verified fact in your database." 
+        },
+        { 
+            id: 2, 
+            title: "Multi-Source Semantic Synthesis", 
+            ai: "<b>Prompt:</b> 'I have uploaded 5 different technical manuals. Explain how to prompt NotebookLM to find contradictions or overlaps across all 5 documents simultaneously. Use point form. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Ensure all 5 sources are checked (ticked) in the source sidebar.<br>2. In the chat box, use a comparative prompt: 'Compare the safety protocols in Source A vs Source B'.<br>3. Review the synthesized response that pulls data from multiple files.<br>4. Use the 'Source Guide' to see top-level themes shared across the files.<br>5. Click 'Select All' sources to ensure the AI's 'Context Window' includes the entire library.<br>6. If a specific source is irrelevant to a query, uncheck it to narrow the AI's focus and improve accuracy." 
+        },
+        { 
+            id: 3, 
+            title: "Automated Briefing Docs (Audio Overview)", 
+            ai: "<b>Prompt:</b> 'Act as a Creative Director. Explain how the 'Audio Overview' feature converts technical text into a conversational deep-dive. Explain how to use this for multi-modal learning. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Open your notebook with at least one uploaded source.<br>2. On the right side of the screen, find the 'Notebook Guide' section.<br>3. Click the 'Generate' button under 'Audio Overview'.<br>4. Wait for the AI to synthesize a 2-person podcast-style discussion of your data.<br>5. Click 'Play' to listen or 'Download' to take the technical briefing on the go.<br>6. Use this to identify high-level concepts you might have missed while reading the raw data manually." 
+        },
+        { 
+            id: 4, 
+            title: "Vector-Based Note Taking (Saved Responses)", 
+            ai: "<b>Prompt:</b> 'Explain how to 'Save' an AI response as a Note and why this is critical for building a permanent knowledge base. Explain how to edit these notes later. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Ask the AI a technical question about your sources.<br>2. At the bottom of the AI's response, click the 'Pin' icon (Save to note).<br>3. Your response is now a standalone note in the center grid.<br>4. Double-click the note to open the editor.<br>5. Manually add your own insights or technical code blocks to the AI-generated text.<br>6. These notes become part of the 'Context'—the AI can now answer questions about your custom notes as if they were original sources." 
+        },
+        { 
+            id: 5, 
+            title: "Source Filtering & Context Narrowing", 
+            ai: "<b>Prompt:</b> 'Act as a Data Librarian. Explain how to toggle specific sources on and off to prevent 'Noise' in the AI's reasoning. Provide a scenario where this is necessary. Use an analogy. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Look at the source list on the left sidebar.<br>2. Uncheck the boxes for sources that are outdated or irrelevant to your current task.<br>3. Ask a question. The AI will now ignore the unchecked data entirely.<br>4. This is critical when managing multiple versions of a software manual (e.g., v1.0 vs v2.0).<br>5. Re-check the boxes when you need a broader, historical comparison again." 
+        },
+        { 
+            id: 6, 
+            title: "Suggested Questions (Exploratory Data)", 
+            ai: "<b>Prompt:</b> 'Explain how the 'Suggested Questions' in the Source Guide are generated based on the semantic content of my files. How can these be used to find 'Unknown Unknowns'? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click on a specific source in the sidebar.<br>2. View the 'Source Guide' that appears.<br>3. Look at the 3-4 clickable bubbles at the bottom (e.g., 'What are the main risks?').<br>4. Click one of these to immediately trigger a deep-dive query.<br>5. These are generated by the AI identifying the most 'conceptually dense' areas of your text.<br>6. Use these as a starting point when you are unfamiliar with a new technical subject." 
+        },
+        { 
+            id: 7, 
+            title: "Website Crawling (URL Sources)", 
+            ai: "<b>Prompt:</b> 'Explain how to add a live Website URL as a source. What are the technical limitations regarding firewalls and login-protected pages? Use point form. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click '+ Add Source'.<br>2. Select 'Website'.<br>3. Paste the full URL of a technical blog or documentation site.<br>4. NotebookLM will crawl the text and create a static 'snapshot' of that page.<br>5. Note: It cannot crawl pages behind a login or 'paywall'.<br>6. Use this to quickly ingest API documentation or industry news for instant querying." 
+        },
+        { 
+            id: 8, 
+            title: "Study Guide Generation", 
+            ai: "<b>Prompt:</b> 'Act as a Learning Architect. Explain how to generate a 'Study Guide' including quizzes and glossaries from a set of technical documents. Output as a simple table. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to the 'Notebook Guide' on the right.<br>2. Click 'Study Guide'.<br>3. The AI will generate a formatted note containing a Glossary of terms and a Short Answer Quiz.<br>4. Review the glossary to ensure the AI correctly identified technical jargon.<br>5. Use the quiz to test your own retention of the source material.<br>6. This note can be exported to Google Docs for further formatting." 
+        },
+        { 
+            id: 9, 
+            title: "Table of Contents Synthesis", 
+            ai: "<b>Prompt:</b> 'Explain how to prompt the AI to generate a unified Table of Contents for a notebook that contains 20+ disparate sources. Explain how this helps in project mapping. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Select all sources in the left sidebar.<br>2. In the chat, type: 'Based on all these sources, create a unified Table of Contents for a master project manual.'<br>3. The AI will categorize the sources into logical chapters.<br>4. Pin this response as a 'Master Note'.<br>5. Use this note as your roadmap for navigating the massive dataset." 
+        },
+        { 
+            id: 10, 
+            title: "Exporting to Google Docs", 
+            ai: "<b>Prompt:</b> 'Explain the technical process of moving my synthesized notes from NotebookLM into Google Docs for final publication. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to the Notes grid in the center of your notebook.<br>2. Click the checkmark on the notes you want to export.<br>3. Click the 'Export to Google Docs' icon at the top of the grid.<br>4. A new Google Doc will be created in your Drive containing all selected notes.<br>5. Formatting (like bold and bullet points) is preserved during the transfer.<br>6. This is the final step in the research-to-publication workflow." 
+        },
+        { 
+            id: 11, 
+            title: "Context Window Troubleshooting", 
+            ai: "<b>Prompt:</b> 'Act as an AI Engineer. Explain what a 'Context Window' is and why NotebookLM has limits on how many sources/words can be uploaded. Explain using an analogy. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Monitor your source list. NotebookLM currently allows up to 50 sources per notebook.<br>2. Each source can be up to 500,000 words.<br>3. If the AI begins to lose accuracy, it may be due to an 'Overfilled Context'.<br>4. To troubleshoot, split your project into two separate notebooks (e.g., 'Phase 1' and 'Phase 2').<br>5. This ensures the AI's attention is focused on the most relevant technical data." 
+        },
+        { 
+            id: 12, 
+            title: "Privacy & Data Governance", 
+            ai: "<b>Prompt:</b> 'Explain Google's privacy policy regarding NotebookLM. Does the data I upload train the global model? How can I ensure enterprise-level data security? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Access the 'Privacy' link at the bottom of the NotebookLM home screen.<br>2. Review the core policy: 'Your personal data is not used to train Google’s models'.<br>3. Note that this applies only to the personal/pro versions; Workspace admins have additional controls.<br>4. To completely wipe data, you must delete the entire Notebook.<br>5. Deleting a source from a notebook removes it from that AI's context window permanently." 
+        }
     ]
     };
 
