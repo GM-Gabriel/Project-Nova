@@ -225,7 +225,99 @@
                 ai: "<b>Prompt:</b> 'Act as an Operations Manager. Explain how to grant a virtual assistant access to read and reply to my Gmail without giving them my actual Google password (Email Delegation). Keep it under 150 words. Show step by step.'", 
                 manual: "<b>Manual Path:</b><br>1. Go to Settings > Accounts and Import.<br>2. Locate the 'Grant access to your account' section.<br>3. Click 'Add another account'.<br>4. Enter the Google email address of your assistant.<br>5. Click 'Next Step' and then 'Send email to grant access'.<br>6. The assistant must open the email and click the confirmation link.<br>7. It takes up to 30 minutes to verify. They can now switch to your inbox from their avatar menu." 
             }
-        ]
+        ],
+        sheets: [
+        { 
+            id: 1, 
+            title: "Automated Data Cleansing", 
+            ai: "<b>Prompt:</b> 'Act as a Data Analyst. I have a messy column of names with extra spaces and mixed capitalization. Explain how to nest the TRIM and PROPER functions to clean this data instantly. Output as a simple table. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Insert a new column next to your messy data (e.g., Column B next to Column A).<br>2. In cell B2, type: <code>=PROPER(TRIM(A2))</code><br>3. Press Enter. The text is now perfectly capitalized with no extra spaces.<br>4. Click cell B2, hover over the bottom-right blue square until the cursor becomes a crosshair.<br>5. Double-click the crosshair to auto-fill the formula down the entire column.<br>6. Copy the new clean column, right-click, and select 'Paste special > Values only' to remove the formulas." 
+        },
+        { 
+            id: 2, 
+            title: "Custom Formula Conditional Formatting", 
+            ai: "<b>Prompt:</b> 'Explain how to use a custom formula in Google Sheets Conditional Formatting to highlight an entire row if the value in the Status column (Column C) is 'Overdue'. Provide the exact formula. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Highlight your entire dataset (e.g., A2:F100).<br>2. Go to Format > Conditional formatting.<br>3. In the sidebar under 'Format rules', click the dropdown and select 'Custom formula is'.<br>4. Enter this formula: <code>=$C2=\"Overdue\"</code> (The $ locks the column).<br>5. Choose a formatting style (e.g., red background).<br>6. Click 'Done'. Now, any row marked 'Overdue' will turn red across all columns." 
+        },
+        { 
+            id: 3, 
+            title: "Data Validation (Dependent Dropdowns)", 
+            ai: "<b>Prompt:</b> 'Act as a Database Architect. Explain how to create a dynamic dropdown menu in Google Sheets where the options in Dropdown B change based on what the user selects in Dropdown A. Use point form. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Create a reference table: Column X has Categories, Columns Y/Z have Sub-categories.<br>2. Select the cell for Dropdown A, go to Data > Data validation, and select the Categories range.<br>3. For Dropdown B, you need an intermediary formula. In a hidden cell, type: <code>=FILTER(Y:Y, X:X = A2)</code>.<br>4. Select the cell for Dropdown B.<br>5. Go to Data > Data validation > Criteria: 'Dropdown (from a range)'.<br>6. Select the range of your hidden FILTER formula.<br>7. As Dropdown A changes, the hidden formula updates, changing the options in Dropdown B." 
+        },
+        { 
+            id: 4, 
+            title: "Relational Mapping (XLOOKUP)", 
+            ai: "<b>Prompt:</b> 'Explain the syntax of the XLOOKUP function in Google Sheets. Compare it to VLOOKUP and explain why XLOOKUP is superior for searching data to the left of the search key. Use a simple table. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Identify your search key (e.g., an Employee ID in cell A2).<br>2. Click the cell where you want the result to appear.<br>3. Type: <code>=XLOOKUP(</code><br>4. Click your search key: <code>A2,</code><br>5. Highlight the column to search in (e.g., the ID column in another sheet): <code>Sheet2!B:B,</code><br>6. Highlight the column with the return value (e.g., the Name column): <code>Sheet2!A:A,</code><br>7. Add a fallback value for errors: <code>\"Not Found\")</code><br>8. Press Enter. Final formula: <code>=XLOOKUP(A2, Sheet2!B:B, Sheet2!A:A, \"Not Found\")</code>" 
+        },
+        { 
+            id: 5, 
+            title: "Advanced Lookups (INDEX & MATCH)", 
+            ai: "<b>Prompt:</b> 'Act as a Senior Financial Analyst. Explain how to nest MATCH inside an INDEX function to create a dynamic two-way lookup (finding a value at the intersection of a specific row and column). Use an analogy. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. The goal is to find data based on row AND column headers.<br>2. Type: <code>=INDEX(</code> and highlight the entire data grid (excluding headers), add a comma.<br>3. Type: <code>MATCH(</code> and click your target Row variable, add a comma.<br>4. Highlight the Row headers column, type <code>,0),</code>.<br>5. Type: <code>MATCH(</code> and click your target Column variable, add a comma.<br>6. Highlight the Column headers row, type <code>,0))</code>.<br>7. Press Enter. It locates the row, locates the column, and returns the intersecting cell." 
+        },
+        { 
+            id: 6, 
+            title: "Pivot Tables & Interactive Slicers", 
+            ai: "<b>Prompt:</b> 'Explain how to generate a Pivot Table from a raw dataset of sales transactions. Then, explain how to attach a 'Slicer' to the Pivot Table so non-technical users can filter the dashboard by 'Region'. Use point form. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click anywhere inside your raw dataset.<br>2. Go to Insert > Pivot table > Create on New sheet.<br>3. In the Pivot editor sidebar, add 'Salesperson' to Rows.<br>4. Add 'Revenue' to Values.<br>5. To make it interactive, go to Data > Add a slicer.<br>6. In the Slicer menu, select the 'Region' column.<br>7. Drag the floating Slicer box above your Pivot Table.<br>8. Users can now click the Slicer to instantly filter the Pivot Table metrics." 
+        },
+        { 
+            id: 7, 
+            title: "Cross-Workbook Synchronization (IMPORTRANGE)", 
+            ai: "<b>Prompt:</b> 'Act as an IT Admin. I need to securely pull data from a master spreadsheet into a separate regional spreadsheet. Explain the syntax of the IMPORTRANGE function and how to authorize access between the two files. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Open the destination spreadsheet.<br>2. Click the target cell and type: <code>=IMPORTRANGE(</code><br>3. In quotation marks, paste the URL of the source spreadsheet: <code>\"https://docs.google.com/spreadsheets/d/abc123XYZ...\",</code><br>4. In quotation marks, type the exact tab name and cell range to pull: <code>\"Sales!A1:D100\")</code><br>5. Press Enter. The cell will display a #REF! error.<br>6. Hover over the #REF! error and click the blue 'Allow access' button to connect the databases." 
+        },
+        { 
+            id: 8, 
+            title: "Automated Array Expansion (ARRAYFORMULA)", 
+            ai: "<b>Prompt:</b> 'Act as a Google Workspace Developer. Explain how ARRAYFORMULA prevents the need to drag functions down 10,000 rows. Write an IF statement wrapped in an ARRAYFORMULA that evaluates Column A and outputs results in Column B. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Delete all existing formulas in your target column (e.g., Column B), leaving only the top cell (B2).<br>2. In B2, write your standard formula but refer to the entire column range instead of one cell. Example: <code>=IF(A2:A=\"Complete\", \"Done\", \"Pending\")</code><br>3. Wrap the entire formula in the function: <code>=ARRAYFORMULA(IF(A2:A=\"Complete\", \"Done\", \"Pending\"))</code><br>4. Alternatively, type the IF statement and press Ctrl+Shift+Enter to automatically wrap it.<br>5. Press Enter. The single formula at the top automatically calculates and populates the entire column down to the bottom of the sheet." 
+        },
+        { 
+            id: 9, 
+            title: "SQL-Style Querying (The QUERY Function)", 
+            ai: "<b>Prompt:</b> 'Act as a Data Scientist. Explain Google Sheets' most powerful function: QUERY. Write a sample QUERY syntax that selects Columns A, B, and C from a dataset, but only where Column B is greater than 100, ordered by Column C. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Identify your raw data source (e.g., Sheet1!A:Z).<br>2. In a new tab, type: <code>=QUERY(</code><br>3. Select the data range: <code>Sheet1!A:Z,</code><br>4. Open quotation marks to write the SQL-like statement: <code>\"SELECT A, B, C WHERE B > 100 ORDER BY C DESC\",</code><br>5. Indicate the number of header rows: <code>1)</code><br>6. Final formula: <code>=QUERY(Sheet1!A:Z, \"SELECT A, B, C WHERE B > 100 ORDER BY C DESC\", 1)</code><br>7. Press Enter. The filtered, sorted data instantly materializes." 
+        },
+        { 
+            id: 10, 
+            title: "Advanced Text Parsing (REGEXEXTRACT)", 
+            ai: "<b>Prompt:</b> 'Explain how to use REGEXEXTRACT in Google Sheets to pull specific data structures out of a messy text string. Provide the formula to extract a 5-digit zip code from a full address string. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Locate the cell containing the complex text (e.g., A2: '123 Main St, Springfield, IL 62704').<br>2. Click an empty cell where you want the extraction.<br>3. Type: <code>=REGEXEXTRACT(</code><br>4. Click the target cell: <code>A2,</code><br>5. Add the Regular Expression logic in quotes. For a 5-digit number, use: <code>\"[0-9]{5}\")</code><br>6. Press Enter. The formula scans the text and outputs only the sequence matching the Regex pattern (62704)." 
+        },
+        { 
+            id: 11, 
+            title: "In-Cell Dashboards (SPARKLINE)", 
+            ai: "<b>Prompt:</b> 'Act as a UI Designer. Explain how to use the SPARKLINE function to create a miniature bar chart inside a single cell to visualize a row of 12 monthly revenue numbers. Provide the exact syntax. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Ensure you have a continuous row of data (e.g., B2:M2).<br>2. Click an empty cell at the end of the row (N2).<br>3. Type: <code>=SPARKLINE(</code><br>4. Select the data range: <code>B2:M2,</code><br>5. Open curly brackets and quotes to define the chart type and color: <code>{\"charttype\",\"column\"; \"color\",\"#4285f4\"})</code><br>6. Final: <code>=SPARKLINE(B2:M2, {\"charttype\",\"column\"; \"color\",\"#4285f4\"})</code><br>7. Press Enter. A mini column chart appears entirely contained within cell N2." 
+        },
+        { 
+            id: 12, 
+            title: "Cell-Level Security (Protected Ranges)", 
+            ai: "<b>Prompt:</b> 'Act as an IT Security Officer. Explain how to lock specific cells in a shared Google Sheet so that anyone can view the document, but only the owner can edit the formulas in columns D and E. Use point form. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Highlight the specific columns/cells you want to lock (e.g., Columns D and E).<br>2. Right-click and select 'View more cell actions' > 'Protect range'.<br>3. A sidebar opens. Give the protected range a description (e.g., 'Core Formulas').<br>4. Click the 'Set permissions' button.<br>5. Choose 'Restrict who can edit this range'.<br>6. Select 'Only you' from the dropdown menu (or specify exact team members).<br>7. Click 'Done'. A padlock icon will now appear on those tabs for unauthorized users." 
+        },
+        { 
+            id: 13, 
+            title: "Custom Number Formatting", 
+            ai: "<b>Prompt:</b> 'Explain how to apply Custom Number Formatting in Google Sheets to make a raw number like 1500 display visually as '+1,500 lbs' without changing the underlying mathematical value of the cell. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Highlight the cells containing your raw numbers.<br>2. Go to Format > Number > Custom number format.<br>3. In the text box, define the logic for positive, negative, and zero values separated by semicolons.<br>4. Type: <code>+#,##0 \"lbs\";-#,##0 \"lbs\";\"0 lbs\"</code><br>5. Click 'Apply'.<br>6. The number 1500 visually changes to '+1,500 lbs', but if you click the cell, the formula bar still reads 1500, allowing math functions to continue working." 
+        },
+        { 
+            id: 14, 
+            title: "Macro Recording (Basic Automation)", 
+            ai: "<b>Prompt:</b> 'Act as an Automation Engineer. Explain how to record a Macro in Google Sheets to automate a repetitive task, such as applying specific header formatting and freezing the top row, so it can be executed with one click. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to Extensions > Macros > Record macro.<br>2. Choose 'Use relative references' in the bottom toolbar so the macro works anywhere on the sheet.<br>3. Perform your tasks exactly as you want them automated (e.g., click Row 1, make it bold, fill background blue, go to View > Freeze > 1 Row).<br>4. Click 'Save' on the macro toolbar.<br>5. Name the macro 'Format_Headers' and assign it a custom shortcut (e.g., Ctrl+Alt+Shift+1).<br>6. To run it later, just press the shortcut or select it from the Extensions > Macros menu." 
+        },
+        { 
+            id: 15, 
+            title: "Apps Script Integration (Custom Functions)", 
+            ai: "<b>Prompt:</b> 'Act as a Software Developer. Explain how to open Google Apps Script from Google Sheets and write a simple custom function in JavaScript (e.g., a function called DOUBLE(x) that multiplies a number by 2) that can be used directly in the spreadsheet cells. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to Extensions > Apps Script. A new coding tab will open.<br>2. Delete any default code in the editor.<br>3. Type the JavaScript function:<br><code>function DOUBLE(input) {<br>  return input * 2;<br>}</code><br>4. Click the floppy disk icon to Save the project.<br>5. Return to your Google Sheet.<br>6. Click an empty cell and type your new custom formula: <code>=DOUBLE(A2)</code><br>7. Press Enter. The sheet communicates with the script, executes the math, and returns the result." 
+        }
+    ]
     };
 
     let userProgress = JSON.parse(localStorage.getItem('nova_v2_progress')) || { tools: [], tasks: [], projects: [] };
