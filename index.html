@@ -317,6 +317,68 @@
             ai: "<b>Prompt:</b> 'Act as a Software Developer. Explain how to open Google Apps Script from Google Sheets and write a simple custom function in JavaScript (e.g., a function called DOUBLE(x) that multiplies a number by 2) that can be used directly in the spreadsheet cells. Show step by step.'", 
             manual: "<b>Manual Path:</b><br>1. Go to Extensions > Apps Script. A new coding tab will open.<br>2. Delete any default code in the editor.<br>3. Type the JavaScript function:<br><code>function DOUBLE(input) {<br>  return input * 2;<br>}</code><br>4. Click the floppy disk icon to Save the project.<br>5. Return to your Google Sheet.<br>6. Click an empty cell and type your new custom formula: <code>=DOUBLE(A2)</code><br>7. Press Enter. The sheet communicates with the script, executes the math, and returns the result." 
         }
+    ],
+        calendar: [
+        { 
+            id: 1, 
+            title: "Advanced Search Operators (Time Auditing)", 
+            ai: "<b>Prompt:</b> 'Act as a Productivity Consultant. Provide 5 advanced search strings I can use in the Google Calendar search bar to find: All events with a specific keyword, events hosted by a specific person, and events within a specific date range. Use point form. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the magnifying glass icon at the top of Google Calendar.<br>2. To find events with a specific person, type: <code>attendee:email@example.com</code>.<br>3. To find events at a specific location, type: <code>location:\"Zoom\"</code>.<br>4. To exclude certain keywords from a search, use the minus sign: <code>-keyword</code>.<br>5. To find exact phrases, use quotation marks: <code>\"Project Nova Sync\"</code>.<br>6. Press Enter. All matching historical and future data will be filtered instantly into a list view." 
+        },
+        { 
+            id: 2, 
+            title: "Time Zone Management (Global Operations)", 
+            ai: "<b>Prompt:</b> 'Act as a Global Operations Manager. Explain how to enable the 'World Clock' and 'Secondary Time Zone' features in Google Calendar settings so I can view 3 different time zones simultaneously on my sidebar. Explain using a simple table. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the Gear icon > Settings.<br>2. Under 'General', click 'Time zone'.<br>3. Check the box for 'Display secondary time zone' and select your target city.<br>4. Scroll down to the 'World clock' section.<br>5. Check 'Show world clock'.<br>6. Click 'Add time zone' and select as many as needed (e.g., UTC, IST, JST).<br>7. Click the back arrow to return to your calendar. The time zones will now be permanently docked on your left sidebar for instant conversion." 
+        },
+        { 
+            id: 3, 
+            title: "Layered Architecture (Multiple Calendars)", 
+            ai: "<b>Prompt:</b> 'Act as a Systems Architect. Explain how to create a separate 'Project-Specific' calendar that can be toggled on/off without cluttering my primary calendar. Explain how to share this specific layer with a team using point form. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. On the left sidebar, find 'Other calendars' and click the '+' icon.<br>2. Select 'Create new calendar'.<br>3. Name it (e.g., 'Nova Dev Cycle') and click 'Create calendar'.<br>4. To share it, hover over the new name in the sidebar, click the 3-dot menu, and select 'Settings and sharing'.<br>5. Scroll to 'Share with specific people' and add your team's emails.<br>6. Adjust permissions to 'See all event details'.<br>7. Click the checkbox next to the calendar name on your main screen to hide or show this specific data layer instantly." 
+        },
+        { 
+            id: 4, 
+            title: "Public Booking Pages (Appointment Slots)", 
+            ai: "<b>Prompt:</b> 'Act as a Technical Recruiter. Explain how to set up a 'Booking Schedule' in Google Calendar that allows external users to see my availability and book time without seeing my private event titles. Explain using an analogy. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the '+ Create' button in the top left.<br>2. Select 'Appointment schedule'.<br>3. Define your 'Appointment duration' (e.g., 30 mins) and your 'General availability' (e.g., 9 AM - 5 PM).<br>4. Set a 'Scheduling window' (e.g., how many days in advance they can book).<br>5. Click 'Next'. Customize your booking form (ask for Name, Email, Phone).<br>6. Click 'Finish'.<br>7. Click the 'Share' button to get a public URL link you can send to anyone or embed on a website." 
+        },
+        { 
+            id: 5, 
+            title: "Deep Work Logic (Focus Time)", 
+            ai: "<b>Prompt:</b> 'Explain the technical difference between a 'Focus Time' event and a standard 'Busy' event in Google Calendar. Explain how Focus Time interacts with Google Chat status and meeting invitations. Output as a paragraph. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click any open time slot on your calendar.<br>2. In the event pop-up, select 'Focus time' from the top tab.<br>3. Set the duration (e.g., 2 hours).<br>4. Check the box 'Automatically decline meetings' during this period.<br>5. Select 'Only new meeting invitations' or 'All meetings'.<br>6. Click 'Save'.<br>7. Your Google Chat status will automatically update to 'Do Not Disturb' (a red minus icon) during this block, and any incoming invites will receive an automated 'Declined' response." 
+        },
+        { 
+            id: 6, 
+            title: "Email-to-Calendar Logic (Automatic Events)", 
+            ai: "<b>Prompt:</b> 'Act as an IT Security Specialist. Explain how Google Calendar parses Gmail data to automatically create events (like flights or hotel bookings). Explain how to disable this for privacy reasons using point form. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to Settings (Gear icon) > Settings.<br>2. On the left menu, click 'Events from Gmail'.<br>3. To keep it active: Ensure the box 'Show events automatically created from Gmail' is checked.<br>4. To disable for privacy: Uncheck the box.<br>5. A warning will appear stating that previously created events will be removed. Confirm.<br>6. To control visibility, use the dropdown to select 'Only me', 'Calendar default', or 'Private'.<br>7. This setting must be managed on a per-user basis; it cannot be forced globally without Admin Console access." 
+        },
+        { 
+            id: 7, 
+            title: "Resource & Room Booking (Workspace Admin)", 
+            ai: "<b>Prompt:</b> 'Explain how to use the 'Browse resources' feature in a corporate Workspace environment to check the availability of physical conference rooms or company equipment. Use a simple table. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Create a new event on your calendar.<br>2. Click 'Add rooms'.<br>3. If you don't see the room you want, click 'Browse resources'.<br>4. Select your building or floor from the list.<br>5. Check the box for the specific room (e.g., 'Conference Room A') to add it to your event.<br>6. If the room is struck through with a line, it is already booked at that time.<br>7. Save the event; the room is now officially 'reserved' in the company database for that duration." 
+        },
+        { 
+            id: 8, 
+            title: "Custom Notification Logic (Webhooks)", 
+            ai: "<b>Prompt:</b> 'Act as a DevOps Engineer. Explain how to customize event notifications so I receive an email 24 hours before an event AND a desktop pop-up 10 minutes before. Explain how these differ from mobile push notifications. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Hover over your primary calendar in the sidebar and click the 3-dot menu > Settings.<br>2. Scroll down to 'Event notifications'.<br>3. Click 'Add notification'. Select 'Email' and set it to '1 Day'.<br>4. Click 'Add notification' again. Select 'Notification' (Pop-up) and set it to '10 Minutes'.<br>5. Scroll down to 'General notifications' to toggle email alerts for 'New events' or 'Cancelled events'.<br>6. These settings apply to the browser; mobile notifications must be set separately within the iOS/Android app settings." 
+        },
+        { 
+            id: 9, 
+            title: "ICS/Calendar URL Integration", 
+            ai: "<b>Prompt:</b> 'Explain how to find your 'Secret Address in iCal format' and why this URL should never be shared publicly. Explain how to use this URL to sync your Google Calendar with an external application like Outlook or Apple Calendar. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to Settings > 'Settings for my calendars' > Select your calendar.<br>2. Scroll all the way to the bottom to 'Integrate calendar'.<br>3. Find the field labeled 'Secret address in iCal format'.<br>4. Click the 'Copy' icon (do not share this link!).<br>5. Open your external app (e.g., Outlook) and select 'Add Calendar' > 'From Internet'.<br>6. Paste the URL. Your Google events will now appear as a read-only layer in that app.<br>7. If the link is ever compromised, click the 'Reset' button next to the URL to break the old connection." 
+        },
+        { 
+            id: 10, 
+            title: "API Troubleshooting (Event IDs)", 
+            ai: "<b>Prompt:</b> 'Act as a Software Developer. Explain how to find the unique 'Event ID' or 'UID' for a calendar entry. Why is this ID critical when using automation tools like Zapier or Apps Script to update an event? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. There is no 'Right Click > Copy ID' in the standard UI. You must use the API Explorer.<br>2. Go to the Google Calendar API documentation page (Developers.google.com).<br>3. Use the <code>Events: list</code> method.<br>4. Enter your calendar ID (usually your email).<br>5. Execute the query. The JSON response will list every event.<br>6. Look for the <code>\"id\": \"...\"</code> string for your specific event.<br>7. Use this string in your script to target that exact event for automated title changes, time shifts, or deletions." 
+        }
     ]
     };
 
