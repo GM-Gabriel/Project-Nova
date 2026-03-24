@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROJECT NOVA | Master Architect</title>
+    <title>PROJECT NOVA | Ultra Build v2.0</title>
     <script>
         function createFavicon() {
             const canvas = document.createElement('canvas');
@@ -38,34 +38,44 @@
         * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
         body { background: var(--bg-dark); color: var(--text-main); font-family: 'Google Sans', sans-serif; margin: 0; display: flex; min-height: 100vh; background-image: radial-gradient(circle at 2% 2%, rgba(66, 133, 244, 0.15), transparent 35%), radial-gradient(circle at 98% 98%, rgba(217, 101, 112, 0.15), transparent 35%); overflow-x: hidden; }
 
-        nav { width: 260px; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(40px); border-right: 1px solid var(--glass-border); padding: 40px 20px; position: fixed; height: 100vh; z-index: 10; }
-        
-        .logo { font-size: 26px; font-weight: 700; letter-spacing: 4px; margin-bottom: 50px; display: block; background: var(--gemini-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 8px rgba(155, 114, 203, 0.3)); }
+        /* Sidebar */
+        nav { width: 260px; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(40px); border-right: 1px solid var(--glass-border); padding: 40px 20px; position: fixed; height: 100vh; z-index: 100; }
+        .logo { font-size: 26px; font-weight: 700; letter-spacing: 4px; margin-bottom: 50px; display: block; background: var(--gemini-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .logo span.n-accent { font-size: 32px; }
-        
-        .nav-item { padding: 14px 18px; border-radius: 12px; margin-bottom: 8px; cursor: pointer; color: var(--text-dim); font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; border: 1px solid transparent; }
-        .nav-item:hover { background: rgba(255,255,255,0.08); color: #fff; border-color: var(--glass-border); transform: translateX(5px); }
-        .nav-item.active { background: var(--glass); border: 1px solid var(--glass-border); color: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .nav-item { padding: 14px 18px; border-radius: 12px; margin-bottom: 8px; cursor: pointer; color: var(--text-dim); font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-item:hover { background: rgba(255,255,255,0.08); color: #fff; transform: translateX(5px); }
+        .nav-item.active { background: var(--glass); border: 1px solid var(--glass-border); color: #fff; }
 
-        main { margin-left: 260px; padding: 60px; width: 100%; max-width: 1200px; }
-        .page { display: none; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        /* Main Content */
+        main { margin-left: 260px; padding: 60px; width: calc(100% - 260px); }
+        .page { display: none; animation: fadeIn 0.5s ease; }
         .page.active { display: block; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        h1 { font-size: 48px; font-weight: 400; margin: 0; letter-spacing: -1px; }
-        .status-pill { display: inline-block; padding: 4px 12px; border-radius: 20px; background: rgba(155, 114, 203, 0.1); color: var(--accent-purple); font-size: 11px; font-weight: 700; margin-bottom: 15px; border: 1px solid rgba(155, 114, 203, 0.3); }
+        /* Roadmap Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-top: 30px; }
+        .card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 24px; padding: 30px; position: relative; backdrop-filter: blur(10px); }
+        .card:hover { border-color: var(--accent-purple); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        
+        /* Buttons */
+        .btn-start { background: var(--gemini-gradient); border: none; color: white; padding: 12px 24px; border-radius: 12px; font-weight: 700; cursor: pointer; margin-top: 20px; width: 100%; font-size: 14px; }
+        .btn-start:hover { filter: brightness(1.2); transform: scale(1.02); }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 24px; padding: 25px; cursor: pointer; position: relative; min-height: 180px; backdrop-filter: blur(10px); }
-        .card:hover { border-color: var(--accent-purple); transform: translateY(-10px) scale(1.02); background: rgba(255,255,255,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(155, 114, 203, 0.1); }
-        
-        .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); backdrop-filter: blur(25px); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
-        .modal { background: #111; width: 700px; padding: 50px; border-radius: 40px; border: 1px solid var(--glass-border); max-height: 90vh; overflow-y: auto; box-shadow: 0 0 50px rgba(0,0,0,1); }
-        
-        .btn { padding: 18px; border-radius: 18px; border: none; font-weight: 700; cursor: pointer; background: var(--gemini-gradient); color: white; width: 100%; margin-top: 25px; font-size: 16px; box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3); }
-        .btn:hover { transform: scale(1.02); filter: brightness(1.1); box-shadow: 0 6px 20px rgba(66, 133, 244, 0.4); }
-        
-        .step-box { background: rgba(255,255,255,0.03); padding: 25px; border-radius: 20px; margin: 20px 0; border-left: 4px solid #4285f4; line-height: 1.8; color: var(--text-dim); }
+        /* Mastery Portal (Deep Dive) */
+        #portal { display: none; position: fixed; inset: 0; background: var(--bg-dark); z-index: 200; overflow-y: auto; padding: 60px; }
+        .portal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+        .task-list { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        .task-item { background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 15px; padding: 20px; }
+        .toggle-box { display: flex; gap: 10px; margin-top: 15px; }
+        .toggle-btn { background: #222; border: 1px solid #444; color: #aaa; padding: 6px 12px; border-radius: 8px; font-size: 11px; cursor: pointer; }
+        .toggle-btn.active { background: #4285f4; color: white; border-color: #4285f4; }
+        .instruction-pane { margin-top: 15px; padding: 15px; background: rgba(0,0,0,0.3); border-radius: 10px; font-size: 14px; display: none; border-left: 3px solid #4285f4; }
+
+        /* Project Tiers */
+        .tier-header { border-bottom: 1px solid #333; padding-bottom: 10px; margin: 40px 0 20px; color: var(--accent-purple); text-transform: uppercase; font-size: 12px; letter-spacing: 2px; }
+
+        /* Prompt Lab Guide */
+        .guide-box { background: rgba(66, 133, 244, 0.1); border: 1px solid #4285f4; padding: 20px; border-radius: 20px; margin-bottom: 20px; display: none; }
     </style>
 </head>
 <body>
@@ -73,53 +83,97 @@
 <nav>
     <span class="logo"><span class="n-accent">N</span>OVA</span>
     <div class="nav-item active" onclick="showPage('roadmap', this)">Skill Roadmap</div>
-    <div class="nav-item" onclick="showPage('projects', this)">My Projects</div>
+    <div class="nav-item" onclick="showPage('projects', this)">Missions</div>
     <div class="nav-item" onclick="showPage('lab', this)">Prompt Lab</div>
     <div class="nav-item" onclick="showPage('settings', this)">System</div>
 </nav>
 
 <main>
+    <!-- ROADMAP PAGE -->
     <div id="roadmap" class="page active">
-        <span class="status-pill">14-TOOL MASTER ARCHITECT Build</span>
-        <h1>Project Nova</h1>
-        <p style="color:var(--text-dim); margin-bottom:45px;">The complete Google Workspace ecosystem, mastered via AI.</p>
+        <h1>Project Nova Mastery</h1>
+        <p style="color:var(--text-dim)">Master 14 tools. 700 Complex Workflows. Two Paths.</p>
         <div class="grid" id="roadmap-grid"></div>
     </div>
 
-    <div id="projects" class="page"><h1>Missions</h1><div class="grid" id="project-grid"></div></div>
-    <div id="lab" class="page"><h1>Prompt Lab</h1><textarea id="promptArea" style="width:100%; height:300px; background:rgba(255,255,255,0.03); border:1px solid #333; border-radius:30px; padding:30px; color:white; font-family:inherit; outline:none;" placeholder="Store your Architect prompts here..."></textarea></div>
-    <div id="settings" class="page"><h1>System</h1><button class="btn" style="width:200px" onclick="localStorage.clear(); location.reload();">Hard Reset Data</button></div>
+    <!-- MISSIONS PAGE -->
+    <div id="projects" class="page">
+        <h1>Project Missions</h1>
+        <div class="tier-header">Solo Sprints (Tool Specific)</div>
+        <div class="grid" id="solo-grid"></div>
+        <div class="tier-header">The Nexus (Joint Integrations)</div>
+        <div class="grid" id="joint-grid"></div>
+    </div>
+
+    <!-- PROMPT LAB -->
+    <div id="lab" class="page">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h1>Prompt Lab</h1>
+            <button class="btn-start" style="width:auto; margin-top:0;" onclick="toggleGuide()">View Lab Guide</button>
+        </div>
+        <div class="guide-box" id="labGuide">
+            <h3>Architect Prompt Framework</h3>
+            <p>1. <b>Context:</b> Start with "Act as a [Professional Role]..."</p>
+            <p>2. <b>Goal:</b> Clearly state the outcome (e.g., "Create a 3-column table summarizing...")</p>
+            <p>3. <b>Manual Override:</b> Ask AI to provide the manual steps if you need to double-check the logic.</p>
+        </div>
+        <textarea id="promptArea" style="width:100%; height:400px; background:rgba(255,255,255,0.02); border:1px solid #333; border-radius:24px; padding:30px; color:white; font-family:inherit; margin-top:20px; outline:none; font-size:16px;" placeholder="Construct your complex prompts here... Data is saved locally."></textarea>
+    </div>
+
+    <!-- SYSTEM -->
+    <div id="settings" class="page">
+        <h1>System Control</h1>
+        <div class="card" style="max-width:400px">
+            <p>This will wipe all 700 tasks and project progress.</p>
+            <button class="btn-start" onclick="hardReset()">Factory Reset All Data</button>
+        </div>
+    </div>
 </main>
 
-<div class="overlay" id="overlay">
-    <div class="modal">
-        <h2 id="m-title"></h2>
-        <div id="m-content"></div>
-        <button class="btn" id="m-complete">Master This Item</button>
-        <button class="btn" style="background:none; border:1px solid #333;" onclick="closeModal()">Return</button>
+<!-- MASTERY PORTAL -->
+<div id="portal">
+    <div class="portal-header">
+        <div>
+            <span id="p-tool-label" style="color:var(--accent-purple); font-weight:700;">TOOL</span>
+            <h1 id="p-tool-name" style="margin:5px 0 0 0;">Mastery Hub</h1>
+        </div>
+        <button class="btn-start" style="width:auto;" onclick="closePortal()">Back to Roadmap</button>
+    </div>
+    <div class="task-list" id="p-task-list">
+        <!-- 50 Tasks go here -->
     </div>
 </div>
 
 <script>
-    const skills = [
-        { id: 1, tool: "Gmail", title: "Thread Summarizer", desc: "Turn 20+ emails into a 3-point action list." },
-        { id: 2, tool: "Sheets", title: "Natural Logic", desc: "Generate complex formulas via text description." },
-        { id: 3, tool: "NotebookLM", title: "Source Chat", desc: "Build an AI brain from private PDFs." },
-        { id: 4, tool: "Docs", title: "Structure Flow", desc: "Convert rough notes into formal reports." },
-        { id: 5, tool: "Calendar", title: "Time Auditor", desc: "Export your week and let Gemini find 'Deep Work' gaps." },
-        { id: 6, tool: "Keep", title: "AI Scratchpad", desc: "Sync prompts and AI snippets via the side-panel." },
-        { id: 7, tool: "Sites", title: "Hub Architect", desc: "Design professional project portals for your team." },
-        { id: 8, tool: "App Sheet", title: "No-Code Creator", desc: "Turn spreadsheets into functional mobile apps." },
-        { id: 9, tool: "Apps Script", title: "Flow Logic", desc: "Write scripts with AI to connect your apps." },
-        { id: 10, tool: "Forms", title: "Intelligent Surveys", desc: "Generate logic-based questions with AI." },
-        { id: 11, tool: "Slides", title: "Pitch Deck AI", desc: "Transform outlines into high-impact slide decks." },
-        { id: 12, tool: "Vids", title: "AI Storyboarding", desc: "Script and storyboard internal team updates." },
-        { id: 13, tool: "Drive", title: "File Governance", desc: "AI-assisted organization and deep search." },
-        { id: 14, tool: "Chat/Spaces", title: "Team AI Hub", desc: "Master AI-driven summaries of group discussions." }
+    // DATA STRUCTURE FOR 14 TOOLS
+    const toolsData = [
+        { id: 'gmail', name: 'Gmail', icon: 'M', desc: 'Summarization & Automation Architect' },
+        { id: 'sheets', name: 'Sheets', icon: 'S', desc: 'Data Analytics & Natural Logic' },
+        { id: 'calendar', name: 'Calendar', icon: 'C', desc: 'Time Auditing & Deep Work Mapping' },
+        { id: 'docs', name: 'Docs', icon: 'D', desc: 'Strategic Report Synthesis' },
+        { id: 'notebook', name: 'NotebookLM', icon: 'N', desc: 'Private AI Brain Builder' },
+        { id: 'keep', name: 'Keep', icon: 'K', desc: 'Cross-App Logic Bridge' },
+        { id: 'sites', name: 'Sites', icon: 'H', desc: 'Project Portal Hub Design' },
+        { id: 'appsheet', name: 'AppSheet', icon: 'A', desc: 'No-Code Mobile Integration' },
+        { id: 'script', name: 'Apps Script', icon: 'AS', desc: 'The Ghost in the Machine (Code)' },
+        { id: 'forms', name: 'Forms', icon: 'F', desc: 'Logic-Based Data Collection' },
+        { id: 'slides', name: 'Slides', icon: 'P', desc: 'Visual Strategic Narratives' },
+        { id: 'vids', name: 'Vids', icon: 'V', desc: 'AI-Driven Internal Storyboarding' },
+        { id: 'drive', name: 'Drive', icon: 'Dr', desc: 'Advanced Governance & Structure' },
+        { id: 'chat', name: 'Chat', icon: 'Ch', desc: 'Team Synergy & AI Summaries' }
     ];
 
-    let currentTask = null;
-    let progress = JSON.parse(localStorage.getItem('nova_prog')) || [];
+    // MOCK DATA FOR THE 50 TASKS (BATCH 1: GMAIL)
+    // I will provide the real 50-task lists in the next follow-up.
+    const tasksData = {
+        gmail: [
+            { id: 1, title: "Thread Summarizer", ai: "Prompt: Summarize the last 10 emails in this thread into 3 bullets.", manual: "Open thread > Read all > Take notes > Draft summary." },
+            { id: 2, title: "Tone Architect", ai: "Prompt: Rewrite this draft to be professional but warm.", manual: "Self-edit > Use synonyms > Adjust greetings." }
+        ]
+        // More will be added here...
+    };
+
+    let userProgress = JSON.parse(localStorage.getItem('nova_v2_progress')) || { tools: [], tasks: [], projects: [] };
 
     function showPage(id, el) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -128,34 +182,82 @@
         el.classList.add('active');
     }
 
-    function render() {
+    function renderRoadmap() {
         const g = document.getElementById('roadmap-grid');
-        if(!g) return;
         g.innerHTML = '';
-        skills.forEach(s => {
-            const isDone = progress.includes(s.id);
-            const c = document.createElement('div');
-            c.className = `card`;
-            if(isDone) c.style.borderColor = '#4285f4';
-            c.onclick = () => {
-                currentTask = s.id;
-                document.getElementById('overlay').style.display = 'flex';
-                document.getElementById('m-title').innerText = s.tool + " Mastery";
-                document.getElementById('m-content').innerHTML = `<div class='step-box'><b>Architect Workflow:</b><br>1. Open ${s.tool}.<br>2. Use Gemini to execute: "${s.desc}"<br>3. Verify the output in your Workspace.</div>`;
-            };
-            c.innerHTML = `<span style="color:var(--accent-purple); font-weight:700; font-size:10px; letter-spacing:1px;">${s.tool}</span><h3>${s.title}</h3><p style="font-size:13px; color:var(--text-dim);">${s.desc}</p>${isDone ? '<b style="color:#4285f4; position:absolute; top:15px; right:20px;">✓</b>' : ''}`;
-            g.appendChild(c);
+        toolsData.forEach(tool => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <div style="font-size:10px; color:var(--accent-purple); font-weight:700;">${tool.id.toUpperCase()}</div>
+                <h3 style="margin:10px 0;">${tool.name}</h3>
+                <p style="font-size:13px; color:var(--text-dim);">${tool.desc}</p>
+                <button class="btn-start" onclick="openPortal('${tool.id}')">Get Started</button>
+            `;
+            g.appendChild(card);
         });
     }
 
-    document.getElementById('m-complete').onclick = () => {
-        if(currentTask && !progress.includes(currentTask)) progress.push(currentTask);
-        localStorage.setItem('nova_prog', JSON.stringify(progress));
-        closeModal(); render();
-    };
+    function openPortal(toolId) {
+        const tool = toolsData.find(t => t.id === toolId);
+        document.getElementById('p-tool-label').innerText = "MASTERING";
+        document.getElementById('p-tool-name').innerText = tool.name;
+        document.getElementById('portal').style.display = 'block';
+        
+        const list = document.getElementById('p-task-list');
+        list.innerHTML = '';
+        
+        // Load tasks (currently using mock data)
+        const tasks = tasksData[toolId] || [];
+        tasks.forEach(task => {
+            const item = document.createElement('div');
+            item.className = 'task-item';
+            item.innerHTML = `
+                <div style="display:flex; justify-content:space-between;">
+                    <b>${task.title}</b>
+                    <input type="checkbox" ${userProgress.tasks.includes(toolId + task.id) ? 'checked' : ''} onchange="toggleTask('${toolId}', ${task.id})">
+                </div>
+                <div class="toggle-box">
+                    <button class="toggle-btn" id="btn-ai-${task.id}" onclick="showPath(${task.id}, 'ai')">AI PATH</button>
+                    <button class="toggle-btn" id="btn-man-${task.id}" onclick="showPath(${task.id}, 'man')">MANUAL PATH</button>
+                </div>
+                <div class="instruction-pane" id="pane-ai-${task.id}">${task.ai}</div>
+                <div class="instruction-pane" id="pane-man-${task.id}" style="border-left-color:#9b72cb">${task.manual}</div>
+            `;
+            list.appendChild(item);
+        });
+    }
 
-    function closeModal() { document.getElementById('overlay').style.display = 'none'; }
-    render();
+    function showPath(taskId, type) {
+        const aiPane = document.getElementById(`pane-ai-${taskId}`);
+        const manPane = document.getElementById(`pane-man-${taskId}`);
+        if(type === 'ai') {
+            aiPane.style.display = 'block';
+            manPane.style.display = 'none';
+        } else {
+            aiPane.style.display = 'none';
+            manPane.style.display = 'block';
+        }
+    }
+
+    function toggleTask(toolId, taskId) {
+        const key = toolId + taskId;
+        if(userProgress.tasks.includes(key)) {
+            userProgress.tasks = userProgress.tasks.filter(t => t !== key);
+        } else {
+            userProgress.tasks.push(key);
+        }
+        localStorage.setItem('nova_v2_progress', JSON.stringify(userProgress));
+    }
+
+    function closePortal() { document.getElementById('portal').style.display = 'none'; }
+    function toggleGuide() { 
+        const g = document.getElementById('labGuide');
+        g.style.display = g.style.display === 'block' ? 'none' : 'block';
+    }
+    function hardReset() { if(confirm("Are you sure?")) { localStorage.clear(); location.reload(); } }
+
+    renderRoadmap();
 </script>
 </body>
 </html>
