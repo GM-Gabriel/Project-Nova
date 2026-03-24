@@ -909,6 +909,68 @@
             ai: "<b>Prompt:</b> 'Explain the technical process of embedding a form into a project website. How do I ensure it resizes correctly for mobile users? Show step by step.'", 
             manual: "<b>Manual Path:</b><br>1. Open your Google Site editor.<br>2. On the 'Insert' panel, select 'Forms'.<br>3. Choose your form and click 'Insert'.<br>4. Drag the corners to fit the page width.<br>5. Click 'Publish'.<br>6. Google Sites automatically handles the 'Mobile Responsiveness', ensuring the form fields are easy to tap on a smartphone screen." 
         }
+    ],
+        slides: [
+        { 
+            id: 1, 
+            title: "Live Data Linking (Sheets to Slides)", 
+            ai: "<b>Prompt:</b> 'Act as a Financial Analyst. Explain how to link a chart from a Google Sheet into a Slide so that when the data in the Sheet changes, the Slide update button appears. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Open your Google Sheet and select the chart you created.<br>2. Press Ctrl+C to copy.<br>3. Go to your Google Slide and press Ctrl+V.<br>4. **Critical:** In the pop-up, select 'Link to spreadsheet' and click 'Paste'.<br>5. Whenever the data in the Sheet changes, a small 'Update' button will appear on the slide chart.<br>6. Click 'Update' to refresh the visual without re-uploading the image." 
+        },
+        { 
+            id: 2, 
+            title: "Master Slide Governance (Global Styling)", 
+            ai: "<b>Prompt:</b> 'Act as a Brand Manager. Explain how to use the 'Theme Builder' to change the font and logo on every single slide at once. Explain why this is better than manual editing. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to Slide > Edit theme.<br>2. Select the top-most 'Master' thumbnail.<br>3. Change the font, background color, or add a logo in the corner.<br>4. Close the Theme Builder.<br>5. Every existing slide and every new slide you create will now automatically inherit these technical styles, ensuring a unified project look." 
+        },
+        { 
+            id: 3, 
+            title: "Non-Linear Navigation (Internal Linking)", 
+            ai: "<b>Prompt:</b> 'Explain how to turn a shape or text box into a button that jumps to a specific slide in the deck. How can this be used to create a clickable Table of Contents? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Insert a shape or text box.<br>2. Right-click the object and select 'Link' (or Ctrl+K).<br>3. Instead of a URL, select 'Slides in this presentation'.<br>4. Choose a specific slide number (e.g., Slide 15: Technical Specs).<br>5. In 'Present' mode, clicking this object will instantly teleport the viewer to that section, turning your deck into an interactive app prototype." 
+        },
+        { 
+            id: 4, 
+            title: "Vector Diagramming (Polylines & Guides)", 
+            ai: "<b>Prompt:</b> 'Act as a Systems Architect. Explain how to use 'Guides' and 'Snap to Grid' to create perfectly aligned technical diagrams. Explain the difference between a 'Line' and a 'Polyline'. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to View > Guides > Show guides.<br>2. Right-click the slide and select 'Add vertical/horizontal guide' to create an alignment grid.<br>3. Select the 'Line' tool dropdown and choose 'Polyline' for complex shapes.<br>4. Click at each anchor point of your diagram and double-click to close the shape.<br>5. Use the 'Format options' sidebar to set precise 'Size & Rotation' numbers for technical accuracy." 
+        },
+        { 
+            id: 5, 
+            title: "Speaker Notes & Presenter View", 
+            ai: "<b>Prompt:</b> 'Explain how to use 'Presenter View' to see your technical script and a timer on one screen while the audience only sees the slides on another. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Type your script into the 'Speaker notes' area below each slide.<br>2. Click the arrow next to the 'Present' button and select 'Presenter view'.<br>3. A second window opens. Drag this to your laptop screen while keeping the main slides on the projector.<br>4. Use the 'Audience Tools' tab to accept live Q&A questions that appear on your private screen during the talk." 
+        },
+        { 
+            id: 6, 
+            title: "Version Comparison (Diff Check)", 
+            ai: "<b>Prompt:</b> 'Act as a Project Coordinator. Explain how to compare two different versions of a presentation to see exactly which slide was deleted or modified. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to File > Version history > See version history.<br>2. Click a previous timestamp.<br>3. Any changes made are highlighted in the sidebar.<br>4. To compare two separate files entirely, use the 'Compare presentations' tool under the 'Tools' menu.<br>5. This creates a new deck where all differences are marked as 'Suggestions' from the other file." 
+        },
+        { 
+            id: 7, 
+            title: "Audio & Video Integration (Live Media)", 
+            ai: "<b>Prompt:</b> 'Explain how to embed a YouTube video and set it to 'Auto-play' when the slide is reached. How do I trim the video to start at 01:30? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to Insert > Video.<br>2. Search YouTube or paste a URL.<br>3. Once inserted, the 'Format options' sidebar opens.<br>4. Under 'Video playback', set the 'Start at' time to 01:30.<br>5. Check the 'Play (automatically)' box.<br>6. This ensures your technical demo starts exactly where the logic begins during your presentation." 
+        },
+        { 
+            id: 8, 
+            title: "Publishing to the Web (Digital Signage)", 
+            ai: "<b>Prompt:</b> 'Act as a Communications Lead. Explain how to 'Publish to the web' so the slides auto-advance every 5 seconds. How can this be used for a lobby kiosk? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to File > Share > Publish to the web.<br>2. Under the 'Link' tab, set 'Auto-advance slides' to 'every 5 seconds'.<br>3. Check 'Start slideshow as soon as the player loads'.<br>4. Click 'Publish' and copy the URL.<br>5. Open this URL on any monitor; the presentation will loop and advance indefinitely without manual input." 
+        },
+        { 
+            id: 9, 
+            title: "The 'Explore' Tool (AI Design)", 
+            ai: "<b>Prompt:</b> 'Explain how the 'Explore' tool uses AI to suggest professional layouts based on the text and images I've already placed on a slide. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Place your raw text and 2-3 images on a blank slide.<br>2. Click the 'Explore' (star) icon in the bottom right corner.<br>3. A sidebar opens with 5-10 professional layout suggestions.<br>4. Click a layout to apply it instantly.<br>5. This saves hours of manual resizing and ensures a balanced visual hierarchy for technical data." 
+        },
+        { 
+            id: 10, 
+            title: "Exporting to Image/PDF (Technical Handouts)", 
+            ai: "<b>Prompt:</b> 'Explain how to export a single slide as a high-resolution PNG or the entire deck as a PDF with '6 slides per page'. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. To save one slide (like a diagram): File > Download > PNG image.<br>2. To create a handout: File > Print preview.<br>3. In the top toolbar, change '1 slide without notes' to '6 slides per page'.<br>4. Click 'Download as PDF'.<br>5. This is the standard way to distribute technical documentation for offline review." 
+        }
     ]
     };
 
