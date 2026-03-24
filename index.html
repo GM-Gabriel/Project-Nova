@@ -743,6 +743,98 @@
             ai: "<b>Prompt:</b> 'Explain the process of 'Deploying' an app. What is the difference between a Prototype and a Deployed app regarding user limits and white-labeling? Show step by step.'", 
             manual: "<b>Manual Path:</b><br>1. Click the 'Manage' > 'Deploy' tab in the sidebar.<br>2. Run the 'Deployment Check'. Address any errors (like missing descriptions).<br>3. Click 'Move app to deployed state'.<br>4. Under App > Brand, you can now change the Launch Image, Logo, and Theme colors to remove the 'AppSheet' branding.<br>5. Note: Deployed apps on the Free tier are limited to 10 users; beyond that, a Workspace license is required." 
         }
+    ],
+        script: [
+        { 
+            id: 1, 
+            title: "The Script Editor Hello World", 
+            ai: "<b>Prompt:</b> 'Act as a JavaScript Instructor. Explain how to open the Apps Script editor from a Google Sheet and write a function that logs 'Hello World' to the execution console. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Open any Google Sheet.<br>2. Go to Extensions > Apps Script.<br>3. Delete the default code and type: <code>function myFirstScript() { Logger.log('Hello World'); }</code>.<br>4. Click the 'Save' icon (floppy disk).<br>5. Click 'Run' at the top.<br>6. View the 'Execution log' at the bottom to see your output.<br>7. Note: The first time you run a script, you must click 'Review Permissions' and 'Allow' to grant the script access to your data." 
+        },
+        { 
+            id: 2, 
+            title: "Custom Spreadsheet Functions", 
+            ai: "<b>Prompt:</b> 'Explain how to create a custom formula in Apps Script (e.g., =MULTIPLY_BY_TEN(A1)) that can be used directly inside a Google Sheet cell. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. In the script editor, define a function with a parameter: <code>function MULTIPLY_BY_TEN(input) { return input * 10; }</code>.<br>2. Save the project.<br>3. Go back to your Sheet cell.<br>4. Type <code>=MULTIPLY_BY_TEN(5)</code>.<br>5. The cell will display '50'.<br>6. Custom functions are perfect for complex math or string manipulations that standard Sheet formulas can't handle." 
+        },
+        { 
+            id: 3, 
+            title: "Automated Email Alerts", 
+            ai: "<b>Prompt:</b> 'Act as a DevOps Engineer. Write a script that checks a specific cell in a Sheet and sends an email via MailApp if the value is greater than 100. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Use <code>SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Sheet1')</code> to get your data.<br>2. Get the value: <code>var val = sheet.getRange('A1').getValue();</code>.<br>3. Use an <code>if (val > 100)</code> statement.<br>4. Inside the if-block, use: <code>MailApp.sendEmail('your@email.com', 'Alert', 'Value exceeded 100!');</code>.<br>5. This allows for 'Heads-up' notifications based on live data changes." 
+        },
+        { 
+            id: 4, 
+            title: "Time-Driven Triggers (Cron Jobs)", 
+            ai: "<b>Prompt:</b> 'Explain how to set up a 'Trigger' that runs a specific script automatically every Monday morning at 8 AM without needing the Sheet to be open. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. In the Apps Script sidebar, click the Clock icon ('Triggers').<br>2. Click '+ Add Trigger' in the bottom right.<br>3. Choose which function to run.<br>4. Under 'Select event source', choose 'Time-driven'.<br>5. Under 'Select type of time based trigger', choose 'Week timer'.<br>6. Select 'Every Monday' and the time window.<br>7. Click 'Save'. Your script is now an autonomous background process." 
+        },
+        { 
+            id: 5, 
+            title: "OnEdit Trigger (Real-Time Logic)", 
+            ai: "<b>Prompt:</b> 'Explain the difference between a 'Simple Trigger' (onEdit) and an 'Installable Trigger'. How can I make a cell change color automatically when its text is edited? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Name your function exactly <code>onEdit(e)</code>. The 'e' stands for 'event object'.<br>2. Access the edited range: <code>var range = e.range;</code>.<br>3. Set a background color: <code>range.setBackground('yellow');</code>.<br>4. Simple triggers like onEdit run automatically every time a user changes a cell value.<br>5. Note: Simple triggers have limited permissions (e.g., they cannot send emails); for that, you need an Installable Trigger." 
+        },
+        { 
+            id: 6, 
+            title: "PDF Auto-Generation from Docs", 
+            ai: "<b>Prompt:</b> 'Act as a Solution Architect. Write a script that takes a Google Doc template, replaces placeholders like {{Name}}, and saves it as a PDF in Drive. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Use <code>DocumentApp.openById('ID')</code> to open your template.<br>2. Create a copy: <code>var copy = doc.makeCopy();</code>.<br>3. Replace text: <code>copy.getBody().replaceText('{{Name}}', 'John Doe');</code>.<br>4. Save and close the copy.<br>5. Convert to PDF: <code>var pdf = copy.getAs('application/pdf');</code>.<br>6. Save to Drive: <code>DriveApp.createFile(pdf);</code>.<br>7. Delete the temporary Doc copy to keep Drive clean." 
+        },
+        { 
+            id: 7, 
+            title: "UI Menus & Sidebars", 
+            ai: "<b>Prompt:</b> 'Explain how to add a 'Custom Menu' to the top of the Google Sheets UI so users can trigger scripts with a button click. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Use the <code>onOpen()</code> function to build the UI.<br>2. Code: <code>var ui = SpreadsheetApp.getUi();</code>.<br>3. <code>ui.createMenu('Custom Tools').addItem('Run Report', 'myFunction').addToUi();</code>.<br>4. Refresh your Sheet.<br>5. A new 'Custom Tools' menu will appear next to 'Help'.<br>6. This makes your technical scripts accessible to non-technical users." 
+        },
+        { 
+            id: 8, 
+            title: "UrlFetchApp (External API Calls)", 
+            ai: "<b>Prompt:</b> 'Act as an Integration Engineer. Explain how to use UrlFetchApp to get current weather data from an external API and paste it into a Sheet cell. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Define your API URL.<br>2. Fetch the data: <code>var response = UrlFetchApp.fetch(url);</code>.<br>3. Parse the JSON: <code>var json = JSON.parse(response.getContentText());</code>.<br>4. Extract the specific piece of data (e.g., <code>json.main.temp</code>).<br>5. Write it to a cell: <code>sheet.getRange('B1').setValue(temp);</code>.<br>6. This connects your Google Workspace to the rest of the internet." 
+        },
+        { 
+            id: 9, 
+            title: "Spreadsheet Performance (Batching)", 
+            ai: "<b>Prompt:</b> 'Explain why using getValue() inside a loop is bad for performance. Explain how to use getValues() and setValues() to process 1,000 rows in one second. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Avoid: Reading cells one-by-one inside a <code>for</code> loop. This is slow because it makes multiple 'calls' to the server.<br>2. Instead: <code>var data = sheet.getRange('A1:C1000').getValues();</code>. This returns a 2D array in one call.<br>3. Process the data in the local JavaScript array.<br>4. Write everything back at once: <code>sheet.getRange('A1:C1000').setValues(processedData);</code>.<br>5. This is the #1 way to optimize Apps Script for large datasets." 
+        },
+        { 
+            id: 10, 
+            title: "Drive File Management (Automation)", 
+            ai: "<b>Prompt:</b> 'Explain how to write a script that finds all files in a specific folder and lists their names and 'Last Updated' dates in a Spreadsheet. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Get the folder: <code>var folder = DriveApp.getFolderById('ID');</code>.<br>2. Get the files: <code>var files = folder.getFiles();</code>.<br>3. Use a <code>while (files.hasNext())</code> loop.<br>4. <code>var file = files.next();</code>.<br>5. <code>sheet.appendRow([file.getName(), file.getLastUpdated()]);</code>.<br>6. This is essential for building automated file audits or backup logs." 
+        },
+        { 
+            id: 11, 
+            title: "Calendar Event Creation", 
+            ai: "<b>Prompt:</b> 'Write a script that reads a list of meeting names and dates from a Sheet and creates corresponding events in Google Calendar. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Get the calendar: <code>var cal = CalendarApp.getCalendarById('email@example.com');</code>.<br>2. Loop through your Sheet rows.<br>3. <code>cal.createEvent(title, startTime, endTime);</code>.<br>4. You can also add descriptions or attendees: <code>cal.createEvent(title, start, end, {description: 'Notes', guests: 'email@test.com'});</code>.<br>5. This automates project scheduling directly from your data source." 
+        },
+        { 
+            id: 12, 
+            title: "Error Handling (Try/Catch Logic)", 
+            ai: "<b>Prompt:</b> 'Act as a Senior Developer. Explain how to use 'Try...Catch' blocks to prevent a script from crashing if an API call fails or a file is missing. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Wrap your risky code in <code>try { ... }</code>.<br>2. Follow it with <code>catch (err) { ... }</code>.<br>3. Inside the catch block, log the error: <code>Logger.log('Error found: ' + err.message);</code>.<br>4. This ensures that even if one row of data is corrupted, the rest of the script continues to run smoothly." 
+        },
+        { 
+            id: 13, 
+            title: "Deploying as a Web App", 
+            ai: "<b>Prompt:</b> 'Explain how to 'Deploy' an Apps Script as a Web App that returns an HTML page. Explain the doGet() function and how to get a public URL. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Create an <code>index.html</code> file in the script project.<br>2. In <code>Code.gs</code>, create a <code>function doGet() { return HtmlService.createHtmlOutputFromFile('index'); }</code>.<br>3. Click 'Deploy' > 'New Deployment'.<br>4. Select 'Web App'.<br>5. Set 'Execute as' to 'Me' and 'Who has access' to 'Anyone'.<br>6. Copy the 'Web App URL'.<br>7. Anyone visiting this link will see your custom HTML interface." 
+        },
+        { 
+            id: 14, 
+            title: "Using External Libraries", 
+            ai: "<b>Prompt:</b> 'Explain how to add an 'External Library' (like a custom Slack connector or a crypto library) using its Script ID. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. In the sidebar, click the '+' next to 'Libraries'.<br>2. Paste the 'Script ID' provided by the library developer.<br>3. Click 'Look Up'.<br>4. Select the version (usually the latest).<br>5. Give it an identifier (e.g., 'Slack').<br>6. Now you can call the library's functions in your code like this: <code>Slack.postMessage('Hello');</code>." 
+        },
+        { 
+            id: 15, 
+            title: "Project Versions & Manifests", 
+            ai: "<b>Prompt:</b> 'Explain the purpose of the 'appsscript.json' manifest file and how to enable it. How do I use 'Versions' to roll back code if I break something? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to Project Settings (Gear icon) and check 'Show appsscript.json manifest file'.<br>2. This JSON file controls scopes and time zones.<br>3. To save a snapshot of your code, click 'Deploy' > 'Manage Deployments' > 'Edit' > 'New Version'.<br>4. Give it a name (e.g., 'Stable v1.0').<br>5. If your current code breaks, you can re-deploy the 'Stable v1.0' version to fix the live environment instantly." 
+        }
     ]
     };
 
