@@ -1107,6 +1107,68 @@
             ai: "<b>Prompt:</b> 'Explain how to enable 'Offline Mode' in the Chrome browser so you can edit Docs/Sheets/Slides without an internet connection. Show step by step.'", 
             manual: "<b>Manual Path:</b><br>1. Go to Drive Settings (Gear icon).<br>2. Under 'General', check the box for 'Offline'.<br>3. Install the 'Google Docs Offline' Chrome extension if prompted.<br>4. Once synced, you can go to drive.google.com while offline.<br>5. Any changes you make will be cached and uploaded to the cloud the next time you connect to Wi-Fi." 
         }
+    ],
+        chat: [
+        { 
+            id: 1, 
+            title: "Threaded Space Architecture", 
+            ai: "<b>Prompt:</b> 'Act as a Project Manager. Explain the difference between a 'Group Chat' and a 'Space' with 'Threaded Replies'. How does threading prevent information overload in a technical team? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the '+' next to 'Spaces' in the sidebar.<br>2. Select 'Create a space'.<br>3. **Critical:** Check the box 'Organize conversation by topic' (Threading).<br>4. Name your space (e.g., 'Nova Dev Log').<br>5. To start a specific discussion, click 'New topic'.<br>6. Team members must click 'Reply' within that topic to keep the main feed clean and searchable." 
+        },
+        { 
+            id: 2, 
+            title: "Incoming Webhooks (External Alerts)", 
+            ai: "<b>Prompt:</b> 'Act as a DevOps Engineer. Explain how to create an 'Incoming Webhook' in a Google Chat Space so that external services (like GitHub or a custom script) can post automated alerts. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the Space name at the top > 'Apps & integrations'.<br>2. Click 'Webhooks' > 'Add webhook'.<br>3. Name it (e.g., 'Error Logger') and provide an avatar URL.<br>4. Click 'Save' and **copy the URL generated**.<br>5. You can now send a POST request to this URL from Apps Script or Zapier to instantly push data into the chat room." 
+        },
+        { 
+            id: 3, 
+            title: "AppSheet to Chat Integration", 
+            ai: "<b>Prompt:</b> 'Explain how to configure an AppSheet Automation to send a notification directly into a Google Chat Space whenever a high-priority task is created. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. In AppSheet Automation, create a new Bot.<br>2. Add a Step > 'Run a task' > 'Send a message'.<br>3. Select 'Google Chat' as the channel.<br>4. Paste the Webhook URL you created in the Chat Space.<br>5. Customize the message body using <code><<[Column_Name]>></code> tags.<br>6. Save. Now, your app 'talks' to your team in real-time." 
+        },
+        { 
+            id: 4, 
+            title: "Space Managers & Permissions", 
+            ai: "<b>Prompt:</b> 'Explain the role of a 'Space Manager'. How do I restrict a space so that only managers can post announcements while others can only read/react? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the Space name > 'Space settings'.<br>2. Under 'Permissions', find 'Who can manage members and settings'.<br>3. Change 'Everyone' to 'Space managers only'.<br>4. Toggle 'Post messages' to 'Space managers only' if creating an Announcement-only channel.<br>5. To promote a user, go to 'Manage members', click the 3-dot menu by their name, and select 'Make space manager'." 
+        },
+        { 
+            id: 5, 
+            title: "Slash Commands & Integrated Apps", 
+            ai: "<b>Prompt:</b> 'Act as a Software Developer. Explain how to use 'Slash Commands' (e.g., /meet) to trigger built-in Google Workspace apps within a chat. List 3 useful commands for productivity. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Type <code>/</code> in any chat box.<br>2. Select <code>/meet</code> to instantly generate and post a Google Meet link.<br>3. Use <code>/drive</code> to search and share files without leaving the chat.<br>4. Use <code>/giphy</code> (if installed) for team morale.<br>5. These commands reduce context-switching and keep the technical workflow fluid." 
+        },
+        { 
+            id: 6, 
+            title: "Task Management within Chat", 
+            ai: "<b>Prompt:</b> 'Explain how to use the 'Tasks' tab inside a Google Chat Space to assign responsibilities and set due dates that sync with Google Tasks. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click into a Space and select the 'Tasks' tab at the top.<br>2. Click 'Add space task'.<br>3. Enter the title, date/time, and assign it to a member of the space.<br>4. The assigned person will see this in their personal Google Tasks app.<br>5. Once completed, checking it off in Chat updates it for everyone in the project." 
+        },
+        { 
+            id: 7, 
+            title: "Shared Files Repository (Space Drive)", 
+            ai: "<b>Prompt:</b> 'Explain how the 'Files' tab in a Chat Space acts as a filtered view of Google Drive. How do I find a document shared 3 months ago without scrolling? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the 'Files' tab at the top of a Space.<br>2. This displays every file ever shared in that chat in a clean list format.<br>3. Click the 'Sort by' dropdown to organize by Date or Name.<br>4. Click the 'View in chat' icon next to a file to jump back to the original conversation context where it was shared.<br>5. This prevents 'lost file syndrome' in long-running projects." 
+        },
+        { 
+            id: 8, 
+            title: "History On/Off Logic (Ephemeral Chat)", 
+            ai: "<b>Prompt:</b> 'Act as a Privacy Officer. Explain the technical difference between a chat with History ON vs. History OFF. How long do messages last in each mode? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the person's name or Space name at the top.<br>2. Select 'History'.<br>3. Toggle to 'OFF'.<br>4. Messages sent with History OFF will be permanently deleted after **24 hours**.<br>5. Use this for sensitive technical credentials or ephemeral debugging logs that don't need to be part of the permanent record." 
+        },
+        { 
+            id: 9, 
+            title: "Custom Emoji & Semantic Reactions", 
+            ai: "<b>Prompt:</b> 'Explain how to upload a 'Custom Emoji' to a Google Workspace organization. How can reactions (e.g., a :green_check:) be used as a shorthand for 'Task Approved'? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the 'Emoji' icon in a chat and select 'Create' (plus icon).<br>2. Upload a small PNG/JPG file and give it a name (e.g., :deploy_ready:).<br>3. Once approved by the admin, the whole team can use it.<br>4. Establish a 'Reaction Protocol': e.g., 'Eyes' emoji means 'I am reviewing', 'Checkmark' means 'Done'." 
+        },
+        { 
+            id: 10, 
+            title: "The Apps Script 'Bot' Framework", 
+            ai: "<b>Prompt:</b> 'Act as a Chatbot Developer. Explain the basic architecture of an Apps Script Chat Bot. What is the difference between an 'Added to Space' event and a 'Message' event? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. In Apps Script, create a function <code>onMessage(e) { ... }</code>.<br>2. Use <code>return { 'text': 'You said: ' + e.message.text };</code>.<br>3. Go to the 'Chat' tab in project settings to configure the bot's name and avatar.<br>4. Deploy as a 'Chat app'.<br>5. Add the bot to your Space by typing <code>@BotName</code>.<br>6. This is the foundation for building custom AI-powered assistants for your team." 
+        }
     ]
     };
 
