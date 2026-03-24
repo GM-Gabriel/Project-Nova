@@ -971,6 +971,68 @@
             ai: "<b>Prompt:</b> 'Explain how to export a single slide as a high-resolution PNG or the entire deck as a PDF with '6 slides per page'. Show step by step.'", 
             manual: "<b>Manual Path:</b><br>1. To save one slide (like a diagram): File > Download > PNG image.<br>2. To create a handout: File > Print preview.<br>3. In the top toolbar, change '1 slide without notes' to '6 slides per page'.<br>4. Click 'Download as PDF'.<br>5. This is the standard way to distribute technical documentation for offline review." 
         }
+    ],
+        vids: [
+        { 
+            id: 1, 
+            title: "The 'Help Me Create' AI Prompt", 
+            ai: "<b>Prompt:</b> 'Act as a Video Producer. I need a 60-second video explaining a new software update. Write a prompt for Google Vids that includes the target audience (Engineers), the tone (Professional), and the core features. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Open Google Vids and click 'Help me create'.<br>2. In the prompt box, describe your video (e.g., 'A 1-minute recap of the Q3 API updates for the dev team').<br>3. Choose a 'Style' from the visual presets.<br>4. Click 'Create'.<br>5. Google Vids will automatically generate a storyboard, suggest stock footage, and write a draft script based on your prompt." 
+        },
+        { 
+            id: 2, 
+            title: "Storyboard Editing (The Scene Layer)", 
+            ai: "<b>Prompt:</b> 'Explain how to use the 'Storyboard' view to reorder scenes, add new slides, and delete AI-generated sections that don't fit. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. On the left sidebar, click the 'Storyboard' icon.<br>2. Drag and drop the rectangular scene thumbnails to change the video sequence.<br>3. Click the '+' icon between scenes to insert a new blank scene.<br>4. Click the 'Delete' icon on any scene that isn't relevant.<br>5. This allows you to refine the AI's first draft into a technical narrative." 
+        },
+        { 
+            id: 3, 
+            title: "Stock Media & Asset Integration", 
+            ai: "<b>Prompt:</b> 'Act as a Content Curator. Explain how to replace a default AI video clip with high-quality stock footage from the built-in library or an uploaded screen recording. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Select a scene in the timeline.<br>2. Click the 'Media' icon in the left toolbar.<br>3. Browse the 'Stock' tab for professional video/photos.<br>4. Or, go to 'Uploads' to drag in your own .mp4 screen recordings of your app.<br>5. Click the 'Replace' button on the scene to swap the old visual for the new one." 
+        },
+        { 
+            id: 4, 
+            title: "AI Voiceover Generation (TTS)", 
+            ai: "<b>Prompt:</b> 'Explain how to choose an AI voice (e.g., 'Calm', 'Energetic') and have the computer read the script for you. How do I adjust the timing of the voice to match the visuals? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the 'Audio' tab in the toolbar.<br>2. Select 'Voiceover'.<br>3. Choose 'Text-to-speech'.<br>4. Select a voice profile (e.g., 'David - Professional').<br>5. Paste your script into the text box for that scene.<br>6. Vids will automatically generate the audio and align the scene duration to the length of the speech." 
+        },
+        { 
+            id: 5, 
+            title: "Screen Recording directly in Vids", 
+            ai: "<b>Prompt:</b> 'Act as a Technical Trainer. Explain how to use the built-in 'Screen Record' feature in Google Vids to capture a live software demo without using external tools. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the '+' icon in the media panel and select 'Record screen'.<br>2. Choose to record your 'Entire Screen' or a 'Specific Tab'.<br>3. Perform your technical demo.<br>4. Click 'Stop'.<br>5. The recording is instantly placed into your media library and can be dragged into any scene in your storyboard." 
+        },
+        { 
+            id: 6, 
+            title: "Text Overlays & Lower Thirds", 
+            ai: "<b>Prompt:</b> 'Explain how to add 'Lower Thirds' (name tags) and floating text titles to a video. How do I change the font to match my project branding? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the 'Text' icon in the toolbar.<br>2. Select a preset (e.g., 'Title', 'Subtitle', or 'Caption').<br>3. Double-click the text on the video canvas to edit the words.<br>4. Use the top formatting bar to change the font, size, and color.<br>5. Use the timeline handles to determine exactly when the text should appear and disappear." 
+        },
+        { 
+            id: 7, 
+            title: "Background Music & Mixing", 
+            ai: "<b>Prompt:</b> 'Act as an Audio Engineer. Explain how to add background music to a video and lower its volume so it doesn't drown out the voiceover. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to the 'Audio' tab and select 'Music'.<br>2. Browse the library for a track (e.g., 'Corporate/Minimal').<br>3. Drag the track to the music layer in the timeline.<br>4. Click the track and use the 'Volume' slider to set it to ~10-15% (ideal for background).<br>5. Use 'Fade in/out' settings to ensure a smooth start and end." 
+        },
+        { 
+            id: 8, 
+            title: "Real-Time Collaboration (Commenting)", 
+            ai: "<b>Prompt:</b> 'Explain how to share a Google Vid with a teammate for review. How do they leave a comment on a specific second (timestamp) of the video? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the 'Share' button (top right) and add an email address.<br>2. Your collaborator opens the link and clicks the 'Comment' icon.<br>3. They can click anywhere on the timeline to leave a timestamped note.<br>4. You will see a small dot on the timeline where the feedback was left, allowing you to fix technical errors at the exact frame." 
+        },
+        { 
+            id: 9, 
+            title: "Transitions & Visual Pacing", 
+            ai: "<b>Prompt:</b> 'Act as a Video Editor. Explain the use of 'Transitions' (e.g., Dissolve, Slide) between scenes. Why should technical videos use minimal transitions? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Hover between two scenes in the timeline until the 'Transition' icon (vertical bar) appears.<br>2. Click it and select a style like 'Cross-fade'.<br>3. Adjust the duration (default is usually 0.5s).<br>4. **Technical Tip:** Use 'Cut' or simple 'Fades' for professional demos; avoid flashy transitions that distract from the data." 
+        },
+        { 
+            id: 10, 
+            title: "Exporting & Resolution Logic", 
+            ai: "<b>Prompt:</b> 'Explain how to export the final video. What file format is used, and how do I save it directly to Google Drive for sharing? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Once finished, click the 'Export' button.<br>2. Select 'MP4'.<br>3. Choose your resolution (1080p is recommended for technical clarity).<br>4. Google Vids will process the video in the cloud.<br>5. Once done, it is saved in your Google Drive 'Vids' folder and you receive a notification link." 
+        }
     ]
     };
 
