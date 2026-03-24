@@ -577,6 +577,80 @@
             ai: "<b>Prompt:</b> 'Explain the technical difference between 'Archiving' a note and 'Deleting' it. Where does the data go, and how long do I have to recover a deleted note? Use a paragraph. Show step by step.'", 
             manual: "<b>Manual Path:</b><br>1. To clean your workspace without losing data, click the 'Archive' (box with down arrow) icon. The note disappears from the main grid but remains searchable.<br>2. To remove a note entirely, click the 3-dot menu > 'Delete note'.<br>3. Deleted notes go to the 'Trash' folder in the sidebar.<br>4. Note: Items in the Trash are permanently deleted after **7 days**.<br>5. Archived items stay in the 'Archive' folder indefinitely until you 'Unarchive' them." 
         }
+    ],
+        sites: [
+        { 
+            id: 1, 
+            title: "Dynamic Asset Embedding (Live Sync)", 
+            ai: "<b>Prompt:</b> 'Act as a Web Developer. Explain how to embed a live Google Sheet and a Google Calendar into a single page on Google Sites. Explain how changes in the source file reflect on the website in real-time. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Open your Google Site editor and select a page.<br>2. On the right-hand 'Insert' panel, scroll down to the 'Google Docs' section and select 'Sheets'.<br>3. Choose your project spreadsheet and click 'Insert'.<br>4. Repeat the process for 'Calendar'.<br>5. Drag and resize the elements to sit side-by-side.<br>6. Click 'Publish'.<br>7. Note: If you update a cell in the Sheet, it will update on the website automatically (usually after a browser refresh) without you needing to re-publish the Site." 
+        },
+        { 
+            id: 2, 
+            title: "Permission Governance (Internal vs. External)", 
+            ai: "<b>Prompt:</b> 'Act as an IT Administrator. Explain the difference between 'Draft' permissions and 'Published' permissions in Google Sites. How can I ensure only people with a specific company email can view the site? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the 'Share with others' (person+) icon at the top.<br>2. Under 'Links', click 'Change'.<br>3. Set 'Draft' to 'Restricted' (only you and editors).<br>4. Set 'Published site' to your Organization name or 'Restricted'.<br>5. If set to 'Restricted', you must manually add the email addresses of viewers.<br>6. Click 'Done'. This ensures your internal project data doesn't leak to the public web." 
+        },
+        { 
+            id: 3, 
+            title: "Semantic Navigation (Hierarchy Design)", 
+            ai: "<b>Prompt:</b> 'Explain how to create 'Sub-pages' and 'Drop-down menus' in the navigation bar to organize a complex project hub. Use an analogy. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. In the right sidebar, click the 'Pages' tab.<br>2. Click the '+' icon to add a new top-level page.<br>3. To create a sub-page, hover over a page name, click the 3-dot menu, and select 'Add subpage'.<br>4. Drag and drop pages to reorder them.<br>5. Go to Settings (Gear icon) > Navigation to choose between 'Top' or 'Side' menu layouts.<br>6. A clean hierarchy allows users to find 'Technical Specs' under 'Documentation' without searching." 
+        },
+        { 
+            id: 4, 
+            title: "Custom Theme & Branding Logic", 
+            ai: "<b>Prompt:</b> 'Act as a UI Designer. Explain how to create a 'Custom Theme' using specific Hex codes for colors and Google Fonts. Explain how this theme applies globally to all headers and buttons. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. In the right sidebar, click the 'Themes' tab.<br>2. Click the '+' (Create theme) button.<br>3. Upload your logo and a banner image.<br>4. Select 'Custom colors' and paste your technical Hex codes (e.g., #4285f4).<br>5. Choose your fonts for 'Titles and headings' and 'Body text'.<br>6. Click 'Create theme'. Every page on your site will now use these unified brand guidelines automatically." 
+        },
+        { 
+            id: 5, 
+            title: "Iframe HTML Embedding", 
+            ai: "<b>Prompt:</b> 'Act as a Frontend Developer. Explain how to use the 'Embed Code' feature to insert a custom HTML/CSS widget (like a countdown timer or a weather API) into a Google Site. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the 'Embed' button on the 'Insert' tab.<br>2. Select the 'Embed code' tab.<br>3. Paste your HTML/CSS/JS snippet into the box.<br>4. Click 'Next' to see a preview, then 'Insert'.<br>5. Note: Google Sites runs embedded code in a 'Sandboxed Iframe' for security, meaning some scripts that require access to the parent page's cookies or top-level data may not function." 
+        },
+        { 
+            id: 6, 
+            title: "Collapsible Group Logic (Clean UI)", 
+            ai: "<b>Prompt:</b> 'Explain how to use 'Collapsible Groups' to hide long technical descriptions until a user clicks on them. Why is this important for mobile responsiveness? Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. From the 'Insert' tab, select 'Collapsible group'.<br>2. Type the header (visible) and the body text (hidden).<br>3. Toggle the 'Collapsible' switch on or off to set the default state.<br>4. Use this for FAQs or long code snippets to keep the page length manageable.<br>5. On mobile, this prevents 'infinite scrolling' and allows users to jump to the data they need." 
+        },
+        { 
+            id: 7, 
+            title: "Table of Contents Automation", 
+            ai: "<b>Prompt:</b> 'Explain how the 'Table of Contents' widget in Google Sites automatically scans the page for 'Heading' styles and creates a navigation list. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Ensure your page text is formatted using the 'Heading' or 'Subheading' styles in the text editor.<br>2. From the 'Insert' tab, click 'Table of contents'.<br>3. The widget will appear at the top of your section.<br>4. It will automatically list every heading on the page as a clickable anchor link.<br>5. If you rename a heading, the Table of Contents updates instantly." 
+        },
+        { 
+            id: 8, 
+            title: "Image Carousels & Data Visualization", 
+            ai: "<b>Prompt:</b> 'Act as a Project Coordinator. Explain how to set up an 'Image Carousel' to cycle through project screenshots or architectural diagrams. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to 'Insert' > 'Image carousel'.<br>2. Upload at least two images.<br>3. Click the Gear icon within the carousel editor to enable 'Auto-start' and set the transition speed.<br>4. Click 'Insert'.<br>5. This is highly effective for showing 'Before and After' technical transitions or step-by-step visual guides." 
+        },
+        { 
+            id: 9, 
+            title: "Search Console & Site Analytics", 
+            ai: "<b>Prompt:</b> 'Act as an SEO Specialist. Explain how to connect a Google Analytics 4 (GA4) Measurement ID to a Google Site to track user traffic and page views. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to your Google Analytics dashboard and copy your 'Measurement ID' (starts with G-).<br>2. In Google Sites, click the Gear icon (Settings).<br>3. Select 'Analytics'.<br>4. Paste your ID into the box.<br>5. Toggle 'Enable analytics'.<br>6. Within 24-48 hours, you will see data in Analytics regarding which pages your team visits most frequently." 
+        },
+        { 
+            id: 10, 
+            title: "Version History & Site Restoration", 
+            ai: "<b>Prompt:</b> 'Explain how to access the 'Version History' of a website to see who deleted a page or to revert the site to a version from 3 days ago. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Click the 3-dot menu next to the 'Publish' button.<br>2. Select 'Version history'.<br>3. A sidebar will show timestamps and the names of editors who made changes.<br>4. Click a version to preview it.<br>5. Click 'Restore this version' to overwrite the current live site with the historical data.<br>6. Note: Restoring a version does not affect the 'live' status of embedded Sheets or Docs; it only changes the site layout and static text." 
+        },
+        { 
+            id: 11, 
+            title: "Custom Domain Mapping", 
+            ai: "<b>Prompt:</b> 'Act as a Network Engineer. Explain the process of mapping a Google Site to a custom domain (e.g., www.myproject.com) using CNAME records. Use a simple table. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Go to Settings (Gear icon) > Custom domains.<br>2. Click 'Start setup'.<br>3. Enter your domain name.<br>4. Follow the prompts to verify ownership via Google Search Console.<br>5. Go to your domain registrar (e.g., Google Domains, GoDaddy) and add a CNAME record: Host: <code>www</code> | Points to: <code>ghs.googlehosted.com</code>.<br>6. Wait for DNS propagation (up to 48 hours). Your site is now professional and branded." 
+        },
+        { 
+            id: 12, 
+            title: "The 'Hidden' Footer Utility", 
+            ai: "<b>Prompt:</b> 'Explain the strategic use of a 'Global Footer' for legal disclaimers, contact info, or quick-links that need to appear on every single page of the site. Show step by step.'", 
+            manual: "<b>Manual Path:</b><br>1. Scroll to the absolute bottom of any page in the editor.<br>2. Click 'Edit footer'.<br>3. Add your text, links, or logos.<br>4. Click anywhere else to save.<br>5. The footer is now 'sticky' across every page in your hierarchy, ensuring consistent access to 'Help Desk' or 'Privacy Policy' links." 
+        }
     ]
     };
 
