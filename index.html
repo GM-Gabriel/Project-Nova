@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROJECT NOVA | Technical Build v2.2</title>
+    <title>PROJECT NOVA | Technical Build v2.3</title>
     <script>
         function createFavicon() {
             const canvas = document.createElement('canvas');
@@ -117,7 +117,6 @@
 
         <textarea id="promptArea" style="width:100%; height:250px; background:rgba(255,255,255,0.02); border:1px solid #333; border-radius:24px; padding:30px; color:white; font-family:inherit; margin-top:20px; outline:none; font-size:16px;" placeholder="Type your prompt here..."></textarea>
         
-        <!-- EVALUATE BUTTON MOVED TO BOTTOM -->
         <div style="text-align: right; margin-top: 15px;">
             <button class="btn-start" style="width:auto; margin-top:0;" onclick="evaluatePrompt()">Evaluate My Prompt</button>
         </div>
@@ -137,7 +136,7 @@
 <div id="portal">
     <div class="portal-header">
         <div>
-            <span id="p-tool-label" style="color:var(--accent-purple); font-weight:700;">TOOL</span>
+            <span id="p-tool-label" style="color:var(--accent-purple); font-weight:700;">TECHNICAL MASTERY</span>
             <h1 id="p-tool-name" style="margin:5px 0 0 0;">Mastery Hub</h1>
         </div>
         <button class="btn-start" style="width:auto;" onclick="closePortal()">Back to Roadmap</button>
@@ -163,38 +162,68 @@
         { id: 'chat', name: 'Chat', icon: 'Ch', desc: 'Webhook Routing & App Integration' }
     ];
 
-    // BATCH 1: GMAIL (Technical Deep Dive - Easiest to Hardest)
+    // BATCH 1: GMAIL (10 Technical Deep Dives - Easiest to Hardest)
     const tasksData = {
         gmail: [
             { 
                 id: 1, 
-                title: "Automated Workflow Routing (Filters)", 
-                ai: "<b>Prompt:</b> 'I need to create a Gmail filter that bypasses my inbox for system alerts. Write the step-by-step logic on how to filter emails containing 'Server Down' so they skip the inbox, apply a red 'URGENT' label, and never go to spam. Format this as a simple table.'", 
-                manual: "<b>Manual Path:</b><br>1. Click the 'Show search options' icon in the Gmail search box.<br>2. In the 'Includes the words' field, type your specific criteria (e.g., 'Server Down').<br>3. Click the 'Create filter' button at the bottom of the dropdown.<br>4. Check the box for 'Skip the Inbox (Archive it)'.<br>5. Check 'Apply the label' and create a new label called 'URGENT'.<br>6. Check 'Never send it to Spam' to ensure delivery.<br>7. Check 'Also apply filter to matching conversations' to retroactively clean your inbox.<br>8. Click 'Create filter' to execute the automation." 
+                title: "Advanced Boolean Search Querying", 
+                ai: "<b>Prompt:</b> 'Act as a database admin. Give me 5 advanced Regex/Boolean search strings I can paste into the Gmail search bar to find: Large attachments over 10MB, emails older than 2 years, and emails from specific domains excluding promotional labels. Use point form. Show step by step.'", 
+                manual: "<b>Manual Path:</b><br>1. Click directly into the main search bar at the top of Gmail.<br>2. To find large files, type <code>larger:10M</code>.<br>3. To find old data, append <code>older_than:2y</code>.<br>4. To exclude marketing emails, append <code>-label:promotions</code>.<br>5. Combine them for advanced queries: <code>larger:5M older_than:6m filename:pdf -label:promotions</code>.<br>6. Press Enter to instantly audit your inbox." 
             },
             { 
                 id: 2, 
-                title: "Advanced Boolean Search Querying", 
-                ai: "<b>Prompt:</b> 'Act as a database admin. Give me 5 advanced Regex/Boolean search strings I can paste into the Gmail search bar to find: Large attachments over 10MB, emails older than 2 years, and emails from specific domains excluding promotional labels. Use point form.'", 
-                manual: "<b>Manual Path:</b><br>1. Click directly into the main search bar at the top of Gmail.<br>2. To find large files tying up storage, type <code>larger:10M</code>.<br>3. To find specific old data, append <code>older_than:2y</code>.<br>4. To exclude marketing emails from your query, append <code>-label:promotions</code>.<br>5. To search for exact phrase matches, use quotation marks (e.g., <code>\"Q3 Financial Report\"</code>).<br>6. To find emails with specific file types, type <code>filename:pdf</code>.<br>7. Combine them for advanced queries: <code>larger:5M older_than:6m filename:pdf -label:promotions</code>.<br>8. Press Enter to instantly audit and filter your inbox database." 
+                title: "Automated Workflow Routing (Filters)", 
+                ai: "<b>Prompt:</b> 'I need to create a Gmail filter that bypasses my inbox for system alerts. Write the logic on how to filter emails containing 'Server Down' so they skip the inbox, apply a red label, and never go to spam. Format this as a simple table. Show step by step.'", 
+                manual: "<b>Manual Path:</b><br>1. Click the 'Show search options' icon in the search box.<br>2. In 'Includes the words', type 'Server Down'.<br>3. Click 'Create filter'.<br>4. Check 'Skip the Inbox (Archive it)'.<br>5. Check 'Apply the label' and create a new label.<br>6. Check 'Never send it to Spam'.<br>7. Click 'Create filter' to execute." 
             },
             { 
                 id: 3, 
-                title: "Workspace Mail Merge Automation", 
-                ai: "<b>Prompt:</b> 'Explain the exact formatting required in a Google Sheet so I can use it as a database for Gmail's native Mail Merge feature. Include how to format the header rows for variables like First Name and Company. Explain using an analogy.'", 
-                manual: "<b>Manual Path:</b><br>1. Open a new Compose window in Gmail.<br>2. Click the 'Use Mail Merge' icon (a person with a gear) located next to the To: field.<br>3. Toggle Mail Merge to the ON position.<br>4. In the To: field, select the option to add a Google Spreadsheet.<br>5. Choose your prepared contact list spreadsheet.<br>6. Type your email body normally.<br>7. Type the <code>@</code> symbol to open the variable menu and select columns from your Sheet (e.g., @First_Name) to inject dynamic data.<br>8. Review the preview pane for the first recipient, then click 'Send All'." 
+                title: "Offline Local Caching Configuration", 
+                ai: "<b>Prompt:</b> 'Act as an IT specialist. Explain how to configure Gmail Offline mode so I can read and compose emails without internet access. Explain what happens to the composed emails when the internet reconnects using an analogy. Show step by step.'", 
+                manual: "<b>Manual Path:</b><br>1. Click the Gear icon > See all settings.<br>2. Navigate to the 'Offline' tab.<br>3. Check 'Enable offline mail'.<br>4. Choose how many days of emails to sync (e.g., 30 days).<br>5. Select 'Keep offline data on my computer' for security.<br>6. Click 'Save Changes'.<br>7. Bookmark mail.google.com to access it while disconnected." 
             },
             { 
                 id: 4, 
-                title: "Zero-Trust Confidential Data Transfer", 
-                ai: "<b>Prompt:</b> 'I need to send API keys to a developer securely via Gmail. Write a 1-paragraph explanation of how Gmail's Confidential Mode handles data encryption and SMS 2FA, and why it prevents the recipient from downloading the text.'", 
-                manual: "<b>Manual Path:</b><br>1. Click 'Compose' to start a new email containing the sensitive data.<br>2. Click the 'Toggle confidential mode' icon (lock with a clock) at the bottom toolbar.<br>3. Set the expiration timeframe (e.g., 'Expires in 1 week').<br>4. Under the 'Require passcode' section, select 'SMS passcode' instead of 'No SMS passcode'.<br>5. Click 'Save' to apply the encryption policy.<br>6. When you click Send, a prompt will ask for the recipient's phone number.<br>7. The recipient receives an email, but must enter the code texted to their phone to unlock the content.<br>8. To revoke access immediately, go to your Sent folder, open the email, and click 'Remove access'." 
+                title: "Alias Configuration (Send Mail As)", 
+                ai: "<b>Prompt:</b> 'Act as a systems administrator. Explain how to add a secondary email alias to my primary Gmail account so I can send outgoing mail from a different domain. Use point form. Show step by step.'", 
+                manual: "<b>Manual Path:</b><br>1. Go to Settings > See all settings.<br>2. Click the 'Accounts and Import' tab.<br>3. Under 'Send mail as', click 'Add another email address'.<br>4. Enter your name and the secondary email address.<br>5. Keep 'Treat as an alias' checked.<br>6. Click Next Step and configure the SMTP server details for the second domain.<br>7. Enter the verification code sent to the secondary email." 
             },
             { 
                 id: 5, 
+                title: "Workspace Mail Merge Automation", 
+                ai: "<b>Prompt:</b> 'Explain the exact formatting required in a Google Sheet so I can use it as a database for Gmail's native Mail Merge. Include how to format header rows for variables. Explain using a simple table. Show step by step.'", 
+                manual: "<b>Manual Path:</b><br>1. Open a new Compose window.<br>2. Click the 'Use Mail Merge' icon next to the To: field.<br>3. Toggle Mail Merge ON.<br>4. In the To: field, select 'Add from a spreadsheet'.<br>5. Choose your formatted contact list.<br>6. Type the <code>@</code> symbol in your email body to open the variable menu.<br>7. Select columns (e.g., @First_Name) to inject dynamic data." 
+            },
+            { 
+                id: 6, 
                 title: "HTML/XML Signature Table Injection", 
-                ai: "<b>Prompt:</b> 'Provide the raw HTML code for a 2-column email signature table. Column 1 should be a placeholder for a logo (width 100px), and Column 2 should contain placeholders for Name, Title, and a hyperlinked phone number. Output only the code.'", 
-                manual: "<b>Manual Path:</b><br>1. Open a blank Google Doc (this acts as a safe visual HTML editor).<br>2. Go to Insert > Table and create a 2x1 table.<br>3. Insert your logo image in the left cell and type your contact variables in the right cell.<br>4. Highlight the table, go to Table Properties, and set the border width to 0pt to make the gridlines invisible.<br>5. Highlight the entire invisible table structure and copy it (Ctrl+C).<br>6. Go to Gmail Settings (gear icon) > 'See all settings'.<br>7. Scroll down to the 'Signature' section, click 'Create new', and paste (Ctrl+V) the table into the text box.<br>8. Scroll to the bottom and click 'Save Changes' to permanently inject the formatted table into your outgoing mail." 
+                ai: "<b>Prompt:</b> 'Provide the raw HTML code for a 2-column email signature table. Column 1 should be a placeholder for a logo, and Column 2 should contain placeholders for Name and Title. Output only the code. Show step by step.'", 
+                manual: "<b>Manual Path:</b><br>1. Open a blank Google Doc.<br>2. Insert a 2x1 table.<br>3. Insert your logo in the left cell and text in the right.<br>4. Go to Table Properties and set border width to 0pt.<br>5. Highlight the table and copy it (Ctrl+C).<br>6. Go to Gmail Settings > 'Signature' section.<br>7. Click 'Create new' and paste the invisible table.<br>8. Click 'Save Changes'." 
+            },
+            { 
+                id: 7, 
+                title: "Zero-Trust Confidential Data Transfer", 
+                ai: "<b>Prompt:</b> 'I need to send API keys securely via Gmail. Write a 1-paragraph explanation of how Confidential Mode handles data encryption and SMS 2FA, preventing the recipient from downloading the text. Show step by step.'", 
+                manual: "<b>Manual Path:</b><br>1. Click 'Compose' to start an email.<br>2. Click the 'Toggle confidential mode' icon (lock with a clock).<br>3. Set the expiration timeframe.<br>4. Select 'SMS passcode'.<br>5. Click 'Save'.<br>6. Click Send and enter the recipient's phone number.<br>7. To revoke access early, go to Sent folder and click 'Remove access'." 
+            },
+            { 
+                id: 8, 
+                title: "IMAP/POP3 Server Fetching", 
+                ai: "<b>Prompt:</b> 'Act as a network engineer. Explain the difference between IMAP and POP3. Then, give me instructions on how to configure Gmail to fetch mail from a legacy external server using POP3. Use point form. Show step by step.'", 
+                manual: "<b>Manual Path:</b><br>1. Go to Settings > Accounts and Import.<br>2. Scroll down to 'Check mail from other accounts'.<br>3. Click 'Add a mail account'.<br>4. Enter the external email address.<br>5. Select 'Import emails from my other account (POP3)'.<br>6. Enter your Username, Password, and the correct POP Server Port (usually 995 for SSL).<br>7. Check 'Always use a secure connection (SSL)' and save." 
+            },
+            { 
+                id: 9, 
+                title: "Google Takeout Backup (MBOX Export)", 
+                ai: "<b>Prompt:</b> 'Act as a data compliance officer. Explain how to export an entire Gmail account's history into an MBOX format using Google Takeout. Explain how a user can open an MBOX file later. Use a simple table. Show step by step.'", 
+                manual: "<b>Manual Path:</b><br>1. Navigate to takeout.google.com.<br>2. Click 'Deselect all' at the top of the list.<br>3. Scroll down and check the box next to 'Mail'.<br>4. Click 'All Mail data included' to filter specific labels if you don't want the whole inbox.<br>5. Scroll to the bottom and click 'Next step'.<br>6. Choose your export destination (e.g., Send download link via email).<br>7. Choose file type (.zip) and click 'Create export'." 
+            },
+            { 
+                id: 10, 
+                title: "Email Delegation (Shared Inbox Setup)", 
+                ai: "<b>Prompt:</b> 'Act as an Operations Manager. Explain how to grant a virtual assistant access to read and reply to my Gmail without giving them my actual Google password (Email Delegation). Keep it under 150 words. Show step by step.'", 
+                manual: "<b>Manual Path:</b><br>1. Go to Settings > Accounts and Import.<br>2. Locate the 'Grant access to your account' section.<br>3. Click 'Add another account'.<br>4. Enter the Google email address of your assistant.<br>5. Click 'Next Step' and then 'Send email to grant access'.<br>6. The assistant must open the email and click the confirmation link.<br>7. It takes up to 30 minutes to verify. They can now switch to your inbox from their avatar menu." 
             }
         ]
     };
@@ -281,7 +310,6 @@
 
     function hardReset() { if(confirm("Are you sure? This deletes all local browser data.")) { localStorage.clear(); location.reload(); } }
 
-    // UPGRADED PROMPT EVALUATOR LOGIC
     function evaluatePrompt() {
         const text = document.getElementById('promptArea').value.toLowerCase();
         const feedbackBox = document.getElementById('evalFeedback');
@@ -294,14 +322,12 @@
             return;
         }
 
-        // Check 1: Context/Role
         if (text.includes("act as") || text.includes("you are") || text.includes("role") || text.includes("persona")) {
             score++;
         } else {
             suggestions.push("🔹 <b>Missing Context:</b> Tell the AI who it is. (e.g., 'Act as a Database Admin...')");
         }
 
-        // Check 2: Format (Expanded List)
         const formats = ["table", "bullet", "format", "list", "point form", "paragraph", "simple table", "analogy", "code", "script"];
         const hasFormat = formats.some(format => text.includes(format));
         if (hasFormat) {
@@ -310,11 +336,10 @@
             suggestions.push("🔹 <b>Missing Format:</b> Specify exactly how you want the output. (e.g., 'Give me a simple table' or 'Explain using an analogy').");
         }
 
-        // Check 3: Constraints
-        if (text.includes("tone") || text.includes("limit") || text.includes("under") || text.includes("only") || text.includes("do not") || text.includes("exclude") || text.includes("exactly")) {
+        if (text.includes("tone") || text.includes("limit") || text.includes("under") || text.includes("only") || text.includes("do not") || text.includes("exclude") || text.includes("exactly") || text.includes("step by step")) {
             score++;
         } else {
-            suggestions.push("🔹 <b>Missing Constraints:</b> Add guardrails. (e.g., 'Output exactly 5 items' or 'Do not use jargon').");
+            suggestions.push("🔹 <b>Missing Constraints:</b> Add guardrails. (e.g., 'Output exactly 5 items' or 'Show step by step').");
         }
 
         if (score === 3) {
